@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .bg { fill: oklch(97% 0.008 85); }
+    .mark { fill: oklch(72% 0.16 85); }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: oklch(12% 0.008 85); }
+    }
+  </style>
+  <rect class="bg" width="32" height="32"/>
+  <rect class="mark" x="5" y="5" width="4" height="22"/>
+  <rect class="mark" x="5" y="5" width="22" height="4"/>
+  <rect class="mark" x="5" y="23" width="22" height="4"/>
+  <rect class="mark" x="23" y="16" width="4" height="11"/>
+  <rect class="mark" x="14" y="16" width="13" height="4"/>
+</svg>

@@ -1,5 +1,5 @@
 {
-  "name": "my_website_temp",
+  "name": "gordan-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,7 +13,14 @@
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp",
+      "unrs-resolver"
+    ]
+  },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

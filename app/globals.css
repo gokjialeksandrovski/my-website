@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: var(--font-display-raw), sans-serif;
+  --font-body: var(--font-body-raw), sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: oklch(97% 0.008 85);
+  --bg-subtle: oklch(93% 0.012 85);
+  --text: oklch(18% 0.01 85);
+  --text-secondary: oklch(38% 0.01 85);
+  --text-muted: oklch(55% 0.01 85);
+  --accent: oklch(72% 0.16 85);
+  --accent-dim: oklch(88% 0.08 85);
+  --rule: oklch(84% 0.010 85);
+  --rule-strong: oklch(65% 0.010 85);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --bg: oklch(12% 0.008 85);
+  --bg-subtle: oklch(17% 0.008 85);
+  --text: oklch(92% 0.01 85);
+  --text-secondary: oklch(72% 0.01 85);
+  --text-muted: oklch(50% 0.01 85);
+  --accent: oklch(72% 0.16 85);
+  --accent-dim: oklch(25% 0.08 85);
+  --rule: oklch(22% 0.010 85);
+  --rule-strong: oklch(35% 0.010 85);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body, "Jost", sans-serif);
+  line-height: 1.6;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--rule);
 }

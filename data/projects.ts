@@ -24,7 +24,7 @@ export const projects: readonly Project[] = [
     number: "01",
     name: "Korrmotive",
     summary:
-      "Macedonian automotive news and reviews platform, built solo from design through deployment. The journalist's site was running on Wix. Rebuilt the whole thing on a custom stack.",
+      "Macedonian automotive news and reviews platform, built solo from design through deployment. The journalist's site was running on Wix. Rebuilt the whole thing on a custom stack. He logs into the admin panel and publishes directly from there.",
     description:
       "The migration was a script: parsed the Wix CSV export, pulled every image from their CDN, re-uploaded to Payload CMS, and rebuilt the full Lexical AST from scratch. Next.js 16 with server components, Payload CMS with a custom Lexical editor (carousel and collage media blocks), PostgreSQL on a Hetzner CX23. Security runs in layers: the admin sits behind Payload session auth and TOTP 2FA, while the public site has a strict Content Security Policy, HSTS preloading, and clickjack protection. Payload ships with GraphQL by default. Disabled it to reduce attack surface. Server-side rate limiting through Nginx. A Payload hook warms the Sharp image cache on every upload. Accessibility throughout: ARIA landmarks, full keyboard navigation on dropdowns and the image modal, focus trapping, and a publish hook that blocks posts with missing alt text. Four JSON-LD schema types for SEO. Deployments run under a dedicated unprivileged user, not root. PM2 with 14-day log rotation keeps the process running at around 1.2GB, with 1.6GB headroom on the 4GB VM. Weekly backups. CI/CD via GitHub Actions: SSH tunnel for DB migrations, rsync to the server, symlink flip for zero-downtime deploys. Self-hosted Umami for cookieless analytics, embedded in the admin panel.",
     technicalSections: [
@@ -64,7 +64,7 @@ export const projects: readonly Project[] = [
       "Git",
     ],
     url: "https://korrmotive.com",
-    year: "2025",
+    year: "2026",
   },
   {
     id: "proj-medicinski",
@@ -115,7 +115,7 @@ export const projects: readonly Project[] = [
     number: "03",
     name: "WestPrint",
     summary:
-      "B2B platform for WestPrint, a Macedonian printing company since 1988. The site covers two sides: equipment sales (printers, cutters, laminators, vinyl, software) and print production services (business cards, stickers, vehicle wraps, signage, and more). Clicking any product or service fires a pre-filled order straight to the team's inbox. Runs in Macedonian, English, and Albanian.",
+      "B2B platform for WestPrint, a Macedonian printing company since 1988. The site covers two sides: equipment sales (printers, cutters, laminators, vinyl, software) and print production services (business cards, stickers, vehicle wraps, signage, and more). Clicking any product or service fires a pre-filled order straight to the team's inbox. Runs in Macedonian, English, and Albanian. The WestPrint team manages the full catalog through the admin panel.",
     description:
       "Next.js 16 and Payload CMS 3 in one codebase. The admin panel runs at /admin inside the same Next.js process as the public frontend. PostgreSQL with a connection pool capped at 10 connections and a 30-second idle timeout, tuned for the 4GB Hetzner box. Three locales (mk, en, sq) with URL-based routing: /:locale/equipment/... Dynamic dictionary imports per locale, falls back to English. Payload local API enforces overrideAccess: false on all server routes, so role checks apply even on internal calls. Admin and Editor roles via JWT: editors manage content, not configuration. ISR with two revalidation windows: 60 seconds on the homepage, 300 on equipment pages. Sharp generates three image variants on upload (thumbnail, card, full), outputs WebP, cached for a year. Contact form rate limited at 5 requests per minute per IP using an in-memory map with automatic window cleanup. Email via Nodemailer and Gmail SMTP with a cached transporter and HTML template. Reply-to headers on every submission so the owner can reply directly. A floating contact button is available on every page. Deployed on Ubuntu behind Nginx, process managed by PM2. Webpack build capped at 2GB to stay within the server memory.",
     technicalSections: [

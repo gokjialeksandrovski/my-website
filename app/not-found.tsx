@@ -41,7 +41,7 @@ const NotFound = () => (
               Page missing
             </p>
             <p className="font-display text-[9px] tracking-[0.12em] uppercase text-(--text-muted)">
-              gordanaleksandrovski.dev
+              gordanaleksandrovski.com
             </p>
           </div>
           <div className="max-w-125">

@@ -13,11 +13,11 @@ export const ThemeToggle = () => {
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       className="font-display text-[11px] tracking-[0.12em] uppercase cursor-pointer self-stretch flex items-center gap-1"
     >
-      <span className={!isDark ? 'text-(--accent)' : 'text-(--text-muted) hover:text-(--text) transition-colors duration-200'}>
+      <span className={!isDark ? 'text-(--text)' : 'text-(--text-muted) hover:text-(--text) transition-colors duration-200'}>
         Light
       </span>
       <span className="text-(--rule-strong)" aria-hidden="true">·</span>
-      <span className={isDark ? 'text-(--accent)' : 'text-(--text-muted) hover:text-(--text) transition-colors duration-200'}>
+      <span className={isDark ? 'text-(--text)' : 'text-(--text-muted) hover:text-(--text) transition-colors duration-200'}>
         Dark
       </span>
     </button>

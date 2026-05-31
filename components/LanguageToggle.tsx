@@ -13,11 +13,11 @@ export const LanguageToggle = () => {
       aria-label={`Switch to ${next === 'mk' ? 'Macedonian' : 'English'}`}
       className="font-display text-[11px] tracking-[0.12em] uppercase cursor-pointer self-stretch flex items-center gap-1"
     >
-      <span className={lang === 'en' ? 'text-(--accent)' : 'text-(--text-muted) hover:text-(--text) transition-colors duration-200'}>
+      <span className={lang === 'en' ? 'text-(--text)' : 'text-(--text-muted) hover:text-(--text) transition-colors duration-200'}>
         EN
       </span>
       <span className="text-(--rule-strong)" aria-hidden="true">·</span>
-      <span className={lang === 'mk' ? 'text-(--accent)' : 'text-(--text-muted) hover:text-(--text) transition-colors duration-200'}>
+      <span className={lang === 'mk' ? 'text-(--text)' : 'text-(--text-muted) hover:text-(--text) transition-colors duration-200'}>
         MK
       </span>
     </button>

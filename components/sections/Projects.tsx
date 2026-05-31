@@ -18,7 +18,7 @@ export const Projects = () => {
       content: t.technicalSections[section.label] ?? section.content,
     }))
 
-    return { ...project, summary: t.summary, technicalSections: translatedSections }
+    return { ...project, ...(t.name && { name: t.name }), summary: t.summary, technicalSections: translatedSections }
   })
 
   return (

@@ -69,7 +69,7 @@ export const projects: readonly Project[] = [
   {
     id: "proj-medicinski",
     number: "02",
-    name: "Medical Faculty",
+    name: "Medical Faculty - Department platform",
     summary:
       "Web platform for the Medical Faculty at Ss. Cyril and Methodius University in Skopje. Students browse all departments, study programs, subjects, and course materials. Professors manage their own content through an admin panel.",
     description:

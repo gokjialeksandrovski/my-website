@@ -4,6 +4,7 @@ export interface ExperienceTranslation {
 }
 
 export interface ProjectTranslation {
+  readonly name?: string
   readonly summary: string
   readonly technicalSections: Readonly<Record<string, string>>
 }

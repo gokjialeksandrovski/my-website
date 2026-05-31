@@ -12,19 +12,23 @@ export interface ContactEntryTranslation {
   readonly tooltip: string
 }
 
+export interface EducationEntryTranslation {
+  readonly note: string
+}
+
 export interface Dictionary {
   readonly nav: {
     readonly skipToContent: string
     readonly experience: string
     readonly work: string
     readonly contact: string
+    readonly education: string
   }
   readonly hero: {
     readonly developerSince: string
     readonly since: string
-    readonly scrollToExplore: string
     readonly philosophyToggle: string
-    readonly getInTouch: string
+    readonly philosophyLead: string
   }
   readonly experience: {
     readonly sectionLabel: string
@@ -45,6 +49,9 @@ export interface Dictionary {
     readonly copyFailed: string
     readonly copyLink: string
   }
+  readonly education: {
+    readonly sectionLabel: string
+  }
   readonly profile: {
     readonly nameFirst: string
     readonly nameLast: string
@@ -56,4 +63,5 @@ export interface Dictionary {
   readonly experienceEntries: Readonly<Record<string, ExperienceTranslation>>
   readonly projectEntries: Readonly<Record<string, ProjectTranslation>>
   readonly contactEntries: Readonly<Record<string, ContactEntryTranslation>>
+  readonly educationEntries: Readonly<Record<string, EducationEntryTranslation>>
 }

@@ -6,6 +6,7 @@ export interface ExperienceEntry {
   readonly company: string
   readonly period: string
   readonly isCurrent: boolean
+  readonly isAchievement?: boolean
   readonly description: string
   readonly stack: readonly Skill[]
 }
@@ -22,19 +23,14 @@ export const experience: readonly ExperienceEntry[] = [
     stack: [
       "Next.js",
       "TypeScript",
-      "Zustand",
       "GraphQL",
       "NestJS",
       "Hasura",
       "Prisma",
-      "Nexus bridge-api",
-      "MySQL",
       "PostgreSQL",
       "New Relic",
-      "Bash",
       "Docker",
       "Terraform",
-      "Git",
     ],
   },
   {
@@ -64,6 +60,7 @@ export const experience: readonly ExperienceEntry[] = [
     company: "Brainster · Larger World",
     period: "Aug 2024",
     isCurrent: false,
+    isAchievement: true,
     description:
       "Built the full frontend of a web platform in 48 hours with a team of four. Competed against eight teams, won. The solution was picked up for continued development after the event.",
     stack: ["React", "Sass", "Figma", "Git"],

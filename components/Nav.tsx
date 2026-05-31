@@ -6,19 +6,23 @@ import { ThemeToggle } from './ThemeToggle'
 import { LanguageToggle } from './LanguageToggle'
 import { useLanguage } from '@/context/LanguageContext'
 import { handleHashClick } from '@/lib/scrollToHash'
+import type { Dictionary } from '@/data/translations/types'
 
-const SECTION_IDS = ['experience', 'projects', 'contact'] as const
+const SECTION_IDS = ['experience', 'projects', 'education', 'contact'] as const
 type SectionId = (typeof SECTION_IDS)[number]
+
+type NavLabelKey = Exclude<keyof Dictionary['nav'], 'skipToContent'>
 
 type NavLinkConfig = {
   href: string
-  labelKey: 'experience' | 'work' | 'contact'
+  labelKey: NavLabelKey
   id: SectionId
 }
 
 const NAV_LINK_CONFIGS: readonly NavLinkConfig[] = [
   { href: '#experience', labelKey: 'experience', id: 'experience' },
   { href: '#projects', labelKey: 'work', id: 'projects' },
+  { href: '#education', labelKey: 'education', id: 'education' },
   { href: '#contact', labelKey: 'contact', id: 'contact' },
 ] as const
 
@@ -27,12 +31,17 @@ const useActiveSection = (): SectionId | null => {
 
   useEffect(() => {
     const compute = () => {
-      const threshold = window.scrollY + window.innerHeight * 0.4
+      const threshold = window.scrollY + 88
       let result: SectionId | null = null
       for (const id of SECTION_IDS) {
         const el = document.getElementById(id)
-        if (el && el.offsetTop <= threshold) result = id
+        if (!el) continue
+        const top = el.getBoundingClientRect().top + window.scrollY
+        if (top <= threshold) result = id
       }
+      const atBottom =
+        window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 40
+      if (atBottom) result = SECTION_IDS.at(-1) ?? result
       setActive(result)
     }
 
@@ -102,7 +111,6 @@ export const Nav = () => {
       </Link>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12">
-        {/* Top row: name + utility toggles (mobile) / full nav (desktop) */}
         <div className="h-10 md:h-11 flex items-center justify-between">
           <Link
             href="/"
@@ -111,7 +119,6 @@ export const Nav = () => {
             {dict.profile.nameFirst} {dict.profile.nameLast}
           </Link>
 
-          {/* Desktop: all nav links + thin separator + utility toggles */}
           <nav aria-label="Primary" className="hidden md:flex items-center gap-8">
             {NAV_LINK_CONFIGS.map((config) => (
               <NavLinkItem
@@ -123,18 +130,18 @@ export const Nav = () => {
               />
             ))}
             <span aria-hidden="true" className="w-px h-3 bg-(--rule-strong) shrink-0" />
-            <LanguageToggle />
-            <ThemeToggle />
+            <div className="flex items-center gap-4">
+              <LanguageToggle />
+              <ThemeToggle />
+            </div>
           </nav>
 
-          {/* Mobile: utility toggles only */}
           <div className="flex items-center gap-4 md:hidden">
             <LanguageToggle />
             <ThemeToggle />
           </div>
         </div>
 
-        {/* Mobile: section nav row */}
         <nav aria-label="Primary" className="md:hidden flex items-center gap-6 h-9 border-t border-(--rule)">
           {NAV_LINK_CONFIGS.map((config) => (
             <NavLinkItem

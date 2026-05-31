@@ -6,13 +6,13 @@ export const en: Dictionary = {
     experience: "Experience",
     work: "Work",
     contact: "Contact",
+    education: "Education",
   },
   hero: {
     developerSince: "Developer since",
     since: "2023",
-    scrollToExplore: "Scroll down if you instantly want to see what I know.",
     philosophyToggle: "my philosophy in a nutshell",
-    getInTouch: "get in touch",
+    philosophyLead: "How I approach the work:",
   },
   experience: {
     sectionLabel: "01 — Experience",
@@ -28,15 +28,18 @@ export const en: Dictionary = {
     github: "GitHub →",
   },
   contact: {
-    sectionLabel: "03 — Contact",
-    availability: "Open to fullstack and frontend roles. Get in touch.",
+    sectionLabel: "04 — Contact",
+    availability: "Thanks for the read. I hope you enjoyed it. If you want to talk or see an example of how I code on a project, find me through the links below.",
     copyFailed: "Copy failed — select manually:",
     copyLink: "Copy link",
+  },
+  education: {
+    sectionLabel: "03 — Education",
   },
   profile: {
     nameFirst: "Gordan",
     nameLast: "Aleksandrovski",
-    statusLabel: "Available for work",
+    statusLabel: "Always learning",
     title: "Fullstack Developer",
     bio: "I build, fix, and maintain code. As a full-stack developer, I balance feature work with regular SRE rotations and DevOps tasks to keep production healthy. I like working in a structured team, but I also run personal projects to stay sharp and experiment with different architecture.",
     about:
@@ -46,7 +49,7 @@ export const en: Dictionary = {
     "exp-01": {
       role: "Junior Software Engineer",
       description:
-        "Primarily on the calendar team, but also sometimes picked up bugs and features from other teams. From September 2025, added SRE rotation and DevOps tasks on top of the fullstack work.",
+        "Full-stack development on the calendar team, with SRE rotations and DevOps responsibilities added from September 2025. Bugs and features from other teams picked up throughout.",
     },
     "exp-02": {
       role: "Software Engineer (Internship)",
@@ -114,6 +117,11 @@ export const en: Dictionary = {
     },
     linkedin: {
       tooltip: "This will open the corporate industry standard.",
+    },
+  },
+  educationEntries: {
+    "edu-01": {
+      note: "13 months of JavaScript, TypeScript, React, CSS (a lot of Tailwind), Firebase, semantic HTML, design fundamentals, and Git.",
     },
   },
 };

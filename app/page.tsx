@@ -2,6 +2,7 @@ import { Nav } from '@/components/Nav'
 import { Hero } from '@/components/sections/Hero'
 import { Experience } from '@/components/sections/Experience'
 import { Projects } from '@/components/sections/Projects'
+import { Education } from '@/components/sections/Education'
 import { Contact } from '@/components/sections/Contact'
 
 const Home = () => (
@@ -11,6 +12,7 @@ const Home = () => (
       <Hero />
       <Experience />
       <Projects />
+      <Education />
       <Contact />
     </main>
   </>

@@ -131,7 +131,7 @@ const NavigableRow = ({ link, copyFailed, copyLink, tooltip }: ContactRowProps &
   const showTooltip = tooltipVisible || status === 'error'
 
   return (
-    <div className="flex items-center justify-between py-5">
+    <div className="group flex items-center justify-between py-5">
       <div className="flex items-center gap-8 md:gap-12">
         <span className="font-display text-[9px] tracking-[0.18em] uppercase text-(--text-muted) w-20 shrink-0">
           {link.label}
@@ -145,7 +145,7 @@ const NavigableRow = ({ link, copyFailed, copyLink, tooltip }: ContactRowProps &
             onMouseLeave={() => status !== 'error' && setTooltipVisible(false)}
             onFocus={() => setTooltipVisible(true)}
             onBlur={() => status !== 'error' && setTooltipVisible(false)}
-            className="font-display text-sm md:text-base tracking-[0.02em] text-(--text-secondary) hover:text-(--accent) transition-colors duration-200"
+            className="font-display text-sm md:text-base tracking-[0.02em] text-(--text-secondary) hover:text-(--accent) group-hover:text-(--accent) transition-colors duration-200"
           >
             {link.value}
           </Link>
@@ -169,7 +169,7 @@ const NavigableRow = ({ link, copyFailed, copyLink, tooltip }: ContactRowProps &
         onBlur={() => status !== 'error' && setTooltipVisible(false)}
         aria-label={`${copyLink}: ${link.label}`}
         aria-describedby={tooltipId}
-        className="font-display text-sm text-(--text-muted) hover:text-(--accent) transition-colors duration-200 cursor-pointer p-2 -mr-2"
+        className="font-display text-sm text-(--text-muted) hover:text-(--accent) group-hover:text-(--accent) transition-colors duration-200 cursor-pointer p-2 -mr-2"
       >
         {INDICATOR[status]}
       </button>

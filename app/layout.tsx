@@ -37,17 +37,23 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gordanaleksandrovski.dev"),
+  metadataBase: new URL("https://gordanaleksandrovski.com"),
   title: "Gordan Aleksandrovski — Fullstack Developer",
   description:
     "Fullstack developer building well-structured web applications with React, Next.js, and Node.js.",
+  authors: [{ name: "Gordan Aleksandrovski", url: "https://gordanaleksandrovski.com" }],
+  alternates: {
+    canonical: "https://gordanaleksandrovski.com",
+  },
   openGraph: {
     type: "website",
-    url: "https://gordanaleksandrovski.dev",
+    url: "https://gordanaleksandrovski.com",
     siteName: "Gordan Aleksandrovski",
     title: "Gordan Aleksandrovski",
     description:
       "Fullstack developer building well-structured web applications.",
+    locale: "en_US",
+    alternateLocale: "mk_MK",
   },
   twitter: {
     card: "summary_large_image",

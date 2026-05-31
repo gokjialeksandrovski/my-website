@@ -22,7 +22,7 @@ const ProjectLinks = ({ project, liveLabel, githubLabel }: ProjectLinksProps) =>
           href={project.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-display text-[10px] tracking-[0.14em] uppercase text-(--text-muted) hover:text-(--accent) transition-colors duration-200"
+          className="font-display text-[11px] tracking-[0.12em] uppercase text-(--text-secondary) hover:text-(--accent) transition-colors duration-200 border-b border-current pb-px"
         >
           {liveLabel}
         </Link>
@@ -32,7 +32,7 @@ const ProjectLinks = ({ project, liveLabel, githubLabel }: ProjectLinksProps) =>
           href={project.repoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-display text-[10px] tracking-[0.14em] uppercase text-(--text-muted) hover:text-(--accent) transition-colors duration-200"
+          className="font-display text-[11px] tracking-[0.12em] uppercase text-(--text-secondary) hover:text-(--accent) transition-colors duration-200 border-b border-current pb-px"
         >
           {githubLabel}
         </Link>
@@ -73,6 +73,12 @@ export const ProjectRow = ({ project }: { project: Project }) => {
           ))}
         </div>
 
+        <ProjectLinks
+          project={project}
+          liveLabel={dict.projects.live}
+          githubLabel={dict.projects.github}
+        />
+
         {project.summary && (
           <Collapsible
             id={collapsibleId}
@@ -99,12 +105,6 @@ export const ProjectRow = ({ project }: { project: Project }) => {
             )}
           </Collapsible>
         )}
-
-        <ProjectLinks
-          project={project}
-          liveLabel={dict.projects.live}
-          githubLabel={dict.projects.github}
-        />
       </div>
     </div>
   )

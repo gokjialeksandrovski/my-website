@@ -16,9 +16,9 @@ export const contactLinks: readonly ContactLink[] = [
   {
     id: 'github',
     label: 'GitHub',
-    value: 'github.com/gokjialeksandrovski',
-    url: 'https://github.com/gokjialeksandrovski',
-    copyValue: 'https://github.com/gokjialeksandrovski',
+    value: 'github.com/gokjialeksandrovski/my-website',
+    url: 'https://github.com/gokjialeksandrovski/my-website',
+    copyValue: 'https://github.com/gokjialeksandrovski/my-website',
   },
   {
     id: 'linkedin',

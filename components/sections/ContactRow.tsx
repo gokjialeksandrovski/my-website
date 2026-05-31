@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type FocusEvent } from 'react'
+import Link from 'next/link'
 import { type ContactLink } from '@/data/contact'
 
 type CopyStatus = 'idle' | 'copied' | 'error'
@@ -85,45 +86,96 @@ interface ContactRowProps {
   tooltip: string
 }
 
+interface RowInnerProps {
+  link: ContactLink
+  status: CopyStatus
+  tooltipId: string
+  showTooltip: boolean
+  copyValue: string
+  tooltip: string
+  copyFailed: string
+}
+
+const RowInner = ({ link, status, tooltipId, showTooltip, copyValue, tooltip, copyFailed }: RowInnerProps) => (
+  <>
+    <div className="flex items-center w-full md:w-auto justify-between md:justify-start md:gap-12">
+      <span className="font-display text-[9px] tracking-[0.18em] uppercase text-(--text-muted) w-20 shrink-0">
+        {link.label}
+      </span>
+      <span className="relative">
+        <span className="font-display text-sm md:text-base tracking-[0.02em] text-(--text-secondary) group-hover:text-(--accent) transition-colors duration-200">
+          {link.value}
+        </span>
+        <ContactTooltip
+          id={tooltipId}
+          show={showTooltip}
+          status={status}
+          copyValue={copyValue}
+          tooltip={tooltip}
+          copyFailed={copyFailed}
+        />
+      </span>
+    </div>
+    <span className="hidden md:inline font-display text-sm text-(--text-muted) group-hover:text-(--accent) transition-colors duration-200">
+      {INDICATOR[status]}
+    </span>
+  </>
+)
+
 export const ContactRow = ({ link, copyFailed, copyLink, tooltip }: ContactRowProps) => {
   const { status, tooltipVisible, setTooltipVisible, handleCopy } = useCopyState(link.copyValue)
   const isTouch = useIsTouch()
   const tooltipId = `tooltip-${link.id}`
   const showTooltip = !isTouch && (tooltipVisible || status === 'error')
 
+  const sharedProps = {
+    onMouseEnter: () => setTooltipVisible(true),
+    onMouseLeave: () => { if (status !== 'error') setTooltipVisible(false) },
+    onFocus: (event: FocusEvent<HTMLElement>) => {
+      if (!isTouch && event.currentTarget.matches(':focus-visible')) {
+        setTooltipVisible(true)
+      }
+    },
+    onBlur: () => { if (!isTouch && status !== 'error') setTooltipVisible(false) },
+    'aria-describedby': tooltipId,
+    className: 'group w-full flex items-center justify-between py-5 cursor-pointer text-left',
+  }
+
+  const inner = (
+    <RowInner
+      link={link}
+      status={status}
+      tooltipId={tooltipId}
+      showTooltip={showTooltip}
+      copyValue={link.copyValue}
+      tooltip={tooltip}
+      copyFailed={copyFailed}
+    />
+  )
+
+  if (link.url) {
+    return (
+      <Link
+        href={link.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={link.label}
+        onClick={() => setTooltipVisible(false)}
+        {...sharedProps}
+      >
+        {inner}
+      </Link>
+    )
+  }
+
   return (
     <button
       type="button"
       onClick={handleCopy}
-      onMouseEnter={() => setTooltipVisible(true)}
-      onMouseLeave={() => status !== 'error' && setTooltipVisible(false)}
-      onFocus={() => { if (!isTouch) setTooltipVisible(true) }}
-      onBlur={() => { if (!isTouch && status !== 'error') setTooltipVisible(false) }}
       aria-label={`${copyLink}: ${link.label}`}
-      aria-describedby={tooltipId}
-      className="group w-full flex items-center justify-between py-5 cursor-pointer text-left"
+      {...sharedProps}
     >
-      <div className="flex items-center w-full md:w-auto justify-between md:justify-start md:gap-12">
-        <span className="font-display text-[9px] tracking-[0.18em] uppercase text-(--text-muted) w-20 shrink-0">
-          {link.label}
-        </span>
-        <span className="relative">
-          <span className="font-display text-sm md:text-base tracking-[0.02em] text-(--text-secondary) group-hover:text-(--accent) transition-colors duration-200">
-            {link.value}
-          </span>
-          <ContactTooltip
-            id={tooltipId}
-            show={showTooltip}
-            status={status}
-            copyValue={link.copyValue}
-            tooltip={tooltip}
-            copyFailed={copyFailed}
-          />
-        </span>
-      </div>
-      <span className="hidden md:inline font-display text-sm text-(--text-muted) group-hover:text-(--accent) transition-colors duration-200">
-        {INDICATOR[status]}
-      </span>
+      {inner}
     </button>
   )
 }

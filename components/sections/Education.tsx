@@ -35,7 +35,7 @@ export const Education = () => {
   })
 
   return (
-    <PageSection id="education" compact>
+    <PageSection id="education">
       <SectionLabel label={dict.education.sectionLabel} />
       <div className="divide-y divide-(--rule)">
         {translatedEntries.map((entry) => (

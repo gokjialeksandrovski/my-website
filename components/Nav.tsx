@@ -142,7 +142,7 @@ export const Nav = () => {
           </div>
         </div>
 
-        <nav aria-label="Primary" className="md:hidden flex items-center gap-6 h-9 border-t border-(--rule)">
+        <nav aria-label="Primary" className="md:hidden flex items-center justify-between h-9 border-t border-(--rule)">
           {NAV_LINK_CONFIGS.map((config) => (
             <NavLinkItem
               key={config.href}

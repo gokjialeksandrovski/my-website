@@ -163,6 +163,8 @@ const NavigableRow = ({ link, copyFailed, copyLink, tooltip }: ContactRowProps &
       <button
         type="button"
         onClick={handleCopy}
+        onMouseEnter={() => setTooltipVisible(true)}
+        onMouseLeave={() => status !== 'error' && setTooltipVisible(false)}
         onFocus={() => setTooltipVisible(true)}
         onBlur={() => status !== 'error' && setTooltipVisible(false)}
         aria-label={`${copyLink}: ${link.label}`}

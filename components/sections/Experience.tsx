@@ -13,19 +13,19 @@ interface ExperienceRowProps {
 
 const ExperienceRow = ({ entry, currentPositionLabel }: ExperienceRowProps) => (
   <div className="py-8 grid grid-cols-1 md:grid-cols-[160px_1fr_1.4fr] gap-y-3 gap-x-8">
-    <div className="flex items-start gap-2 pt-0.5">
+    <div className="flex items-center gap-2 self-start pt-1">
       <span className="font-display text-[11px] tracking-widest uppercase text-(--text-muted) leading-snug">
         {entry.period}
       </span>
       {entry.isCurrent && (
         <span
-          className="mt-0.75 shrink-0 w-1.25 h-1.25 rounded-full bg-(--accent)"
+          className="shrink-0 w-1.25 h-1.25 rounded-full bg-(--accent)"
           aria-label={currentPositionLabel}
         />
       )}
     </div>
 
-    <div>
+    <div className="pt-1">
       <p className="font-display text-[13px] tracking-[0.04em] uppercase font-semibold text-(--text) leading-snug">
         {entry.role}
       </p>

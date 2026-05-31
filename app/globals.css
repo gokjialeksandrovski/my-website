@@ -65,6 +65,16 @@ body {
   animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+@keyframes scroll-hint {
+  0%, 100% { opacity: 0.2; transform: translateY(0); }
+  50% { opacity: 0.5; transform: translateY(4px); }
+}
+
+.animate-scroll-hint {
+  animation: scroll-hint 2.4s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -74,6 +84,11 @@ body {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+
+  .animate-scroll-hint {
+    animation: none;
+    opacity: 0.25;
   }
 }
 
@@ -86,6 +101,7 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
+  overflow: hidden;
 }
 
 .section-label::after {

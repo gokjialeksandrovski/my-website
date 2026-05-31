@@ -14,7 +14,7 @@ export const Contact = () => {
     <PageSection id="contact">
       <SectionLabel label={dict.contact.sectionLabel} />
 
-      <p className="text-base text-(--text-secondary) leading-relaxed max-w-120 mb-12">
+      <p className="text-base text-(--text-secondary) leading-relaxed mb-12">
         {dict.contact.availability}
       </p>
 

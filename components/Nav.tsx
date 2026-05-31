@@ -110,7 +110,7 @@ export const Nav = () => {
         {dict.nav.skipToContent}
       </Link>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12">
+      <div className="max-w-7xl mx-auto px-8 md:px-12">
         <div className="h-10 md:h-11 flex items-center justify-between">
           <Link
             href="/"

@@ -6,10 +6,11 @@ interface CollapsibleProps {
   id: string
   label: string
   buttonColorClass?: string
+  buttonMarginClass?: string
   children: React.ReactNode
 }
 
-export const Collapsible = ({ id, label, buttonColorClass, children }: CollapsibleProps) => {
+export const Collapsible = ({ id, label, buttonColorClass, buttonMarginClass, children }: CollapsibleProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -19,7 +20,7 @@ export const Collapsible = ({ id, label, buttonColorClass, children }: Collapsib
         onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
         aria-controls={id}
-        className={`mt-4 flex items-center gap-2 font-display text-[10px] tracking-[0.14em] uppercase hover:text-(--accent) transition-colors duration-200 cursor-pointer ${buttonColorClass ?? 'text-(--text-secondary)'}`}
+        className={`${buttonMarginClass ?? 'mt-4'} flex items-center gap-2 font-display text-[10px] tracking-[0.14em] uppercase hover:text-(--accent) transition-colors duration-200 cursor-pointer ${buttonColorClass ?? 'text-(--text-secondary)'}`}
       >
         <span aria-hidden="true" className="w-2.5 text-left leading-none text-(--accent)">
           {isOpen ? '−' : '+'}
@@ -29,6 +30,7 @@ export const Collapsible = ({ id, label, buttonColorClass, children }: Collapsib
 
       <div
         id={id}
+        aria-hidden={!isOpen}
         style={{
           display: 'grid',
           gridTemplateRows: isOpen ? '1fr' : '0fr',

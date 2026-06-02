@@ -10,6 +10,7 @@ export const SKILLS = [
   "GitHub Actions (CI/CD)",
   "GraphQL",
   "Hasura",
+  "Kubernetes",
   "MySQL",
   "NestJS",
   "New Relic",

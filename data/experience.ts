@@ -30,6 +30,7 @@ export const experience: readonly ExperienceEntry[] = [
       "PostgreSQL",
       "New Relic",
       "Docker",
+      "Kubernetes",
       "Terraform",
     ],
   },

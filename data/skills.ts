@@ -11,6 +11,7 @@ export const SKILLS = [
   "GraphQL",
   "Hasura",
   "Kubernetes",
+  "Linux",
   "MySQL",
   "NestJS",
   "New Relic",

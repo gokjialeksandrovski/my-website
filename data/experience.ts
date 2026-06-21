@@ -32,6 +32,7 @@ export const experience: readonly ExperienceEntry[] = [
       "Docker",
       "Kubernetes",
       "Terraform",
+      "Linux",
     ],
   },
   {
@@ -53,6 +54,7 @@ export const experience: readonly ExperienceEntry[] = [
       "Day.js",
       "Formik",
       "Git",
+      "Linux",
     ],
   },
   {

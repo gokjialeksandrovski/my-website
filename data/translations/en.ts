@@ -93,7 +93,7 @@ export const en: Dictionary = {
     },
     "proj-westprint": {
       summary:
-        "B2B platform for WestPrint, a Macedonian printing company since 1988. The site covers two sides: equipment sales (printers, cutters, laminators, vinyl, software) and print production services (business cards, stickers, vehicle wraps, signage, and more). Clicking any product or service fires a pre-filled order straight to the team's inbox. Runs in Macedonian, English, and Albanian. The WestPrint team manages the full catalog through the admin panel.",
+        "Catalog and inquiry platform for WestPrint, a Macedonian printing company since 1988. The site covers two sides: equipment (printers, cutters, laminators, vinyl, software) and print production services (business cards, stickers, vehicle wraps, signage, and more). Visitors browse the catalog, and clicking any product or service opens a pre-filled inquiry email straight to the team's inbox. Runs in Macedonian, English, and Albanian. The WestPrint team manages the full catalog through the admin panel.",
       technicalSections: {
         Architecture:
           "Next.js 16 and Payload CMS 3 in one codebase. Admin panel at /admin, inside the same Next.js process. Three locales (mk, en, sq) with URL-based routing. Dynamic dictionary imports per locale, falls back to English. Payload local API enforces overrideAccess: false on all server routes; Admin and Editor JWT roles.",

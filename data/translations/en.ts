@@ -41,7 +41,7 @@ export const en: Dictionary = {
     nameLast: "Aleksandrovski",
     statusLabel: "Always learning",
     title: "Fullstack Developer",
-    bio: "I build, fix, and maintain code. As a full-stack developer, I balance feature work with regular SRE rotations and DevOps tasks to keep production healthy. I like working in a structured team, but I also run personal projects to stay sharp and experiment with different architecture.",
+    bio: "I build, fix, and maintain code. As a full-stack developer, I spent the last year balancing feature work with SRE rotations and DevOps tasks to keep production healthy. I like working in a structured team, but I also run personal projects to stay sharp and experiment with different architecture.",
     about:
       "This site has one job: make it clear that I'm serious. That's genuinely it. It's a portfolio. Static data, most people open it once and never come back. Easy excuse to phone it in, or the polar opposite: overengineer it into something nobody asked for. I always try to do neither. If something's going in front of people, it has to actually be good. Not passable. Good. Enjoyable, even. Worth the extra minutes. That tension is kind of how I approach everything: keep it simple, don't complicate what doesn't need to be complicated, but don't let simplicity become an excuse for laziness. One non-negotiable: accounting for preferences that aren't mine. Every project has at least some of it. A theme toggle, an extra language, keyboard navigation. Not because it's required. Because it should be there. Get the point across, leave nothing important out, and make it worth someone else's time.",
   },

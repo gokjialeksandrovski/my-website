@@ -16,8 +16,8 @@ export const experience: readonly ExperienceEntry[] = [
     id: "exp-01",
     role: "Junior Software Engineer",
     company: "Pabau Clinic Software",
-    period: "May 2025 — Present",
-    isCurrent: true,
+    period: "May 2025 — Jun 2026",
+    isCurrent: false,
     description:
       "Primarily on the calendar team, but also sometimes picked up bugs and features from other teams. Starting in September 2025, I was assigned additional responsibilities involving SRE rotations and DevOps tasks in addition to my full-stack development work.",
     stack: [

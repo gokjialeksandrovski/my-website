@@ -14,4 +14,10 @@ export const education: readonly EducationEntry[] = [
     period: "Sep 2023 — Oct 2024",
     note: "13 months of JavaScript, TypeScript, React, CSS (a lot of Tailwind), Firebase, semantic HTML, design fundamentals, and Git.",
   },
+  {
+    id: "edu-02",
+    institution: "Public Secondary School \"Georgi Dimitrov\"",
+    program: "Natural Sciences and Mathematics",
+    period: "Sep 2018 — Jun 2022",
+  },
 ]

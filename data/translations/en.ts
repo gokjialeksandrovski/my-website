@@ -49,7 +49,7 @@ export const en: Dictionary = {
     "exp-01": {
       role: "Junior Software Engineer",
       description:
-        "Full-stack development on the calendar team, with SRE rotations and DevOps responsibilities added from September 2025. Bugs and features from other teams picked up throughout.",
+        "Full-stack development on the calendar team, with SRE rotations and DevOps responsibilities covering the whole infrastructure added from September 2025. Bugs and features from other teams picked up throughout.",
     },
     "exp-02": {
       role: "Software Engineer (Internship)",
@@ -79,7 +79,7 @@ export const en: Dictionary = {
     },
     "proj-medicinski": {
       summary:
-        "Web platform for the Medical Faculty at Ss. Cyril and Methodius University in Skopje. Students browse all departments, study programs, subjects, and course materials. Professors manage their own content through an admin panel.",
+        "Web platform for the Medical Faculty at Ss. Cyril and Methodius University in Skopje. Students browse all departments, study programs, subjects, and course materials. Professors manage their own content through an admin panel. The server is owned and maintained by FINKI (Факултет за информатички науки и компјутерско инженерство), the Faculty of Computer Science and Engineering, not by me.",
       technicalSections: {
         "Content model":
           "Four levels deep: Katedra → Fakultet → Predmet → Kategorija. Relations are bidirectional: subjects know their programs, categories know their subjects. Content stored as Strapi rich-text blocks; each subject branches into category pages for materials, exam questions, and grading info.",

@@ -19,7 +19,7 @@ export const experience: readonly ExperienceEntry[] = [
     period: "May 2025 — Jun 2026",
     isCurrent: false,
     description:
-      "Primarily on the calendar team, but also sometimes picked up bugs and features from other teams. Starting in September 2025, I was assigned additional responsibilities involving SRE rotations and DevOps tasks in addition to my full-stack development work.",
+      "Primarily on the calendar team, but also sometimes picked up bugs and features from other teams. Starting in September 2025, I was assigned additional responsibilities involving SRE rotations and DevOps tasks covering the whole infrastructure, in addition to my full-stack development work.",
     stack: [
       "Next.js",
       "TypeScript",

@@ -23,7 +23,7 @@ export const contactLinks: readonly ContactLink[] = [
   {
     id: 'linkedin',
     label: 'LinkedIn',
-    value: 'linkedin.com/in/gordan-aleksandrovski',
+    value: 'linkedin.com/in/gordan-aleksandrovski-99a62a202',
     url: 'https://www.linkedin.com/in/gordan-aleksandrovski-99a62a202/',
     copyValue: 'https://www.linkedin.com/in/gordan-aleksandrovski-99a62a202/',
   },

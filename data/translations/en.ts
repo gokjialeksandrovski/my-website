@@ -5,14 +5,32 @@ export const en: Dictionary = {
     skipToContent: "Skip to content",
     experience: "Experience",
     work: "Work",
+    ai: "AI",
     contact: "Contact",
     education: "Education",
+    primary: "Primary",
+  },
+  toggles: {
+    light: "Light",
+    dark: "Dark",
+    switchToLight: "Switch to light mode",
+    switchToDark: "Switch to dark mode",
+    switchLanguage: "Switch to Macedonian",
+  },
+  a11y: {
+    newTab: "opens in a new tab",
+  },
+  notFound: {
+    titleFirst: "Not",
+    titleLast: "Found",
+    headline: "Page missing",
+    body: "This URL doesn't map to anything. That's the whole story.",
+    back: "Back to the portfolio",
   },
   hero: {
-    developerSince: "Developer since",
-    since: "2023",
-    philosophyToggle: "my philosophy in a nutshell",
-    philosophyLead: "How I approach the work:",
+    engineerSince: "Engineer since",
+    since: "2024",
+    philosophyToggle: "How I approach the work",
   },
   experience: {
     sectionLabel: "01 — Experience",
@@ -23,43 +41,94 @@ export const en: Dictionary = {
   },
   projects: {
     sectionLabel: "02 — Selected Work",
-    technicalToggle: "technical",
+    technicalToggle: "How it's built",
     live: "Live →",
-    github: "GitHub →",
   },
   contact: {
-    sectionLabel: "04 — Contact",
-    availability: "Thanks for the read. I hope you enjoyed it. If you want to talk or see an example of how I code on a project, find me through the links below.",
-    copyFailed: "Copy failed — select manually:",
+    sectionLabel: "05 — Contact",
+    availability: "Hiring for an SRE, DevOps or full-stack role? Email me. To see how I write code first, the GitHub link opens this site's source.",
+    location: "Skopje, North Macedonia",
+    copyFailed: "Couldn't copy. Select the address and copy it:",
+    copied: "Copied to clipboard",
     copyLink: "Copy link",
   },
   education: {
-    sectionLabel: "03 — Education",
+    sectionLabel: "04 — Education",
+  },
+  aiEngineering: {
+    sectionLabel: "03 — AI-Assisted Engineering",
+    practices: [
+      {
+        label: "Daily use",
+        text: "I use Claude Code for most of my work: features, debugging, infrastructure, docs, and this site. I read every diff before it ships.",
+      },
+      {
+        label: "Plans and playbooks",
+        text: "I brainstorm before coding. Complex features also get a written plan, which I later delete and replace with a playbook of that feature's architecture and rules for the next similar feature. Recurring jobs get playbooks too, with checks the agent must pass and a log of past failures. When a run comes back wrong, I fix the playbook.",
+      },
+      {
+        label: "Context",
+        text: "I clear context between tasks and build each part of a feature with its own agent, compacting only when a task outgrows the window. A CLI output proxy, terse response modes and codebase knowledge graphs keep token use down.",
+      },
+      {
+        label: "Review",
+        text: "Code review goes to fresh subagents. The agent that wrote the code doesn't review it.",
+      },
+      {
+        label: "Rules and lint",
+        text: "I wrote a 22-rule engineering rulebook and add to it when review finds a new kind of bug. Eight rules run as custom ESLint checks with test fixtures, and a Stop hook won't let the agent finish while a file it touched fails lint.",
+      },
+      {
+        label: "Docs",
+        text: "Each project's CLAUDE.md stays short: project rules and a table of docs, each with a \"read when\" trigger, so the agent opens only what its task needs. One fact lives in one doc, and docs change in the same commit as the code they cover. I packaged this setup as a skill that reorganizes a project's docs.",
+      },
+    ],
   },
   profile: {
     nameFirst: "Gordan",
     nameLast: "Aleksandrovski",
-    statusLabel: "Always learning",
-    title: "Fullstack Developer",
-    bio: "I build, fix, and maintain code. As a full-stack developer, I spent the last year balancing feature work with SRE rotations and DevOps tasks to keep production healthy. I like working in a structured team, but I also run personal projects to stay sharp and experiment with different architecture.",
+    statusLabel: "Now · IT Ops & Support at Avenga",
+    title: "Full-Stack Engineer · Site Reliability",
+    bio: "I build, fix, and maintain code. At Pabau I built full-stack calendar features, then added bi-weekly SRE on-call shifts and DevOps tasks covering the whole infrastructure. Now I'm in IT operations and support at Avenga, working on a telecom client's systems. I like working in a structured team, but I also run personal projects to stay sharp and experiment with different architectures.",
     about:
-      "This site has one job: make it clear that I'm serious. That's genuinely it. It's a portfolio. Static data, most people open it once and never come back. Easy excuse to phone it in, or the polar opposite: overengineer it into something nobody asked for. I always try to do neither. If something's going in front of people, it has to actually be good. Not passable. Good. Enjoyable, even. Worth the extra minutes. That tension is kind of how I approach everything: keep it simple, don't complicate what doesn't need to be complicated, but don't let simplicity become an excuse for laziness. One non-negotiable: accounting for preferences that aren't mine. Every project has at least some of it. A theme toggle, an extra language, keyboard navigation. Not because it's required. Because it should be there. Get the point across, leave nothing important out, and make it worth someone else's time.",
+      `This site has one job: make it clear that I'm serious. That's it.
+
+It's a portfolio. Static data, most people open it once and never come back. Easy excuse to phone it in, or to go the other way and overengineer it into something nobody asked for. I try to do neither.
+
+If something's going in front of people, it has to be good, not just passable, and ideally enjoyable enough to be worth the extra minutes. That's how I approach most things: keep it simple and don't complicate what doesn't need it, but don't let simple turn into lazy.
+
+The one thing I won't skip is accounting for preferences that aren't mine. Every project gets at least some of it: a theme toggle, an extra language, keyboard navigation. Nobody asks for it, but it should be there. I want the point to get across with nothing important left out, in a way that's worth someone's time.`,
+  },
+  period: {
+    months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    present: "Present",
   },
   experienceEntries: {
-    "exp-01": {
+    "exp-avenga": {
+      role: "Associate IT Operations and Support Engineer",
+      description:
+        "Avenga is an international IT services company. I'm on the IT operations and support team for a telecom client, monitoring their systems and responding to alerts.",
+    },
+    "exp-pabau-sre": {
+      role: "Junior Site Reliability / Software Engineer",
+      sectionLabels: ["On-call and monitoring", "Infrastructure", "Calendar team"],
+      description:
+        "Took bi-weekly SRE on-call shifts via PagerDuty and DevOps tasks covering the whole infrastructure. Used New Relic to diagnose slow queries and CPU/memory spikes, and flagged a compromised SendGrid account from a traced request spike.\n\nMonitored and recreated Kubernetes pods in Rancher on DigitalOcean for prod, staging and QA, and rotated secrets and JWTs monthly from Jenkins. Restarted Docker containers, truncated container and server logs, and updated an image for the move to Bun. Provisioned jobs, alerts and servers with Terraform, brought up two servers in TypeScript Pulumi for Rancher 2, and registered self-hosted Bitbucket runners on Hetzner with SOPS-encrypted secrets. Stored clinic data backups and CDN images in AWS S3.\n\nOn the calendar team, shipped a full-stack \"show deactivated staff\" toggle: a NestJS resolver and lazy GraphQL query for their past shifts and appointments.",
+    },
+    "exp-pabau-junior": {
       role: "Junior Software Engineer",
       description:
-        "Full-stack development on the calendar team, with SRE rotations and DevOps responsibilities covering the whole infrastructure added from September 2025. Bugs and features from other teams picked up throughout.",
+        "Full-stack development on the calendar team. Picked up bugs and features from other teams too.",
     },
-    "exp-02": {
+    "exp-pabau-intern": {
       role: "Software Engineer (Internship)",
       description:
-        "Joined as an intern, worked on frontend features, and moved into a full-time role at the end of the term.",
+        "Joined as an intern and shipped frontend work to production. Studied the platform architecture, started on the backend and database, and moved into a full-time role at the end of the term.",
     },
-    "exp-03": {
+    "exp-hackathon": {
       role: "Hackathon Winner",
       description:
-        "Built the full frontend of a web platform in 48 hours with a team of four. Competed against eight teams, won. The solution was picked up for continued development after the event.",
+        "Built the full frontend of a web platform in 48 hours with a team of four. Competed against seven other teams, won. The solution was picked up for continued development after the event.",
     },
   },
   projectEntries: {
@@ -108,15 +177,18 @@ export const en: Dictionary = {
   },
   contactEntries: {
     email: {
+      label: "Email",
       tooltip:
-        "Genuinely not a fan of prompts that open email apps. There are too many of them. Here's a copy to paste.",
+        "Copies the address to your clipboard. No mail app opens.",
     },
     github: {
+      label: "GitHub",
       tooltip:
-        "This will open this website's repo so you can see how I organize code. Repos for clients are private, even though the code is mine, it's not mine for sharing.",
+        "Opens this site's source in a new tab. Client repos are private, so this is the code I can show.",
     },
     linkedin: {
-      tooltip: "This will open the corporate industry standard.",
+      label: "LinkedIn",
+      tooltip: "Opens my LinkedIn profile in a new tab.",
     },
   },
   educationEntries: {

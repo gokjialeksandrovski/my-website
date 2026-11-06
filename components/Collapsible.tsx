@@ -20,9 +20,9 @@ export const Collapsible = ({ id, label, buttonColorClass, buttonMarginClass, ch
         onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
         aria-controls={id}
-        className={`${buttonMarginClass ?? 'mt-4'} flex items-center gap-2 font-display text-[10px] tracking-[0.14em] uppercase hover:text-(--accent) transition-colors duration-200 cursor-pointer ${buttonColorClass ?? 'text-(--text-secondary)'}`}
+        className={`${buttonMarginClass ?? 'mt-4'} relative before:absolute before:inset-x-0 before:-inset-y-1.5 flex items-center gap-2 font-display text-[11px] tracking-[0.14em] uppercase hover:text-(--accent-text) transition-colors duration-200 cursor-pointer ${buttonColorClass ?? 'text-(--text-secondary)'}`}
       >
-        <span aria-hidden="true" className="w-2.5 text-left leading-none text-(--accent)">
+        <span aria-hidden="true" className="w-2.5 text-left leading-none text-(--accent-text)">
           {isOpen ? '−' : '+'}
         </span>
         <span className="border-b border-current pb-px">{label}</span>

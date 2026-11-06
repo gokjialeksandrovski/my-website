@@ -7,21 +7,18 @@ export interface TechnicalSection {
 
 export interface Project {
   readonly id: string
-  readonly number: string
   readonly name: string
   readonly summary?: string
   readonly description: string
   readonly technicalSections?: readonly TechnicalSection[]
   readonly stack: readonly Skill[]
   readonly url?: string
-  readonly repoUrl?: string
   readonly year: string
 }
 
 export const projects: readonly Project[] = [
   {
     id: "proj-korrmotive",
-    number: "01",
     name: "Korrmotive",
     summary:
       "Macedonian automotive news and reviews platform, built solo from design through deployment. The journalist's site was running on Wix. Rebuilt the whole thing on a custom stack. He logs into the admin panel and publishes directly from there.",
@@ -56,6 +53,7 @@ export const projects: readonly Project[] = [
       "Payload CMS",
       "PostgreSQL",
       "Web-scraping",
+      "Hetzner",
       "Nginx",
       "PM2",
       "GitHub Actions (CI/CD)",
@@ -68,8 +66,7 @@ export const projects: readonly Project[] = [
   },
   {
     id: "proj-medicinski",
-    number: "02",
-    name: "Medical Faculty - Department platform",
+    name: "Medical Faculty – Department Platform",
     summary:
       "Web platform for the Medical Faculty at Ss. Cyril and Methodius University in Skopje. Students browse all departments, study programs, subjects, and course materials. Professors manage their own content through an admin panel. The server is owned and maintained by FINKI (Факултет за информатички науки и компјутерско инженерство), the Faculty of Computer Science and Engineering, not by me.",
     description:
@@ -112,7 +109,6 @@ export const projects: readonly Project[] = [
   },
   {
     id: "proj-westprint",
-    number: "03",
     name: "WestPrint",
     summary:
       "Catalog and inquiry platform for WestPrint, a Macedonian printing company since 1988. The site covers two sides: equipment (printers, cutters, laminators, vinyl, software) and print production services (business cards, stickers, vehicle wraps, signage, and more). Visitors browse the catalog, and clicking any product or service opens a pre-filled inquiry email straight to the team's inbox. Runs in Macedonian, English, and Albanian. The WestPrint team manages the full catalog through the admin panel.",
@@ -152,6 +148,6 @@ export const projects: readonly Project[] = [
       "Git",
     ],
     url: "https://westprint.mk",
-    year: "2025",
+    year: "2024",
   },
 ];

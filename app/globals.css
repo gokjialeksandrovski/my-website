@@ -12,9 +12,10 @@
   --bg-subtle: oklch(93% 0.012 85);
   --text: oklch(18% 0.01 85);
   --text-secondary: oklch(38% 0.01 85);
-  --text-muted: oklch(55% 0.01 85);
+  --text-muted: oklch(52% 0.01 85);
   --accent: oklch(72% 0.16 85);
-  --accent-dim: oklch(88% 0.08 85);
+  /* Bright amber is 2.3:1 on paper; text and focus rings need 4.5:1, so they take this darker step. */
+  --accent-text: oklch(52% 0.12 75);
   --rule: oklch(84% 0.010 85);
   --rule-strong: oklch(65% 0.010 85);
 }
@@ -24,9 +25,9 @@
   --bg-subtle: oklch(17% 0.008 85);
   --text: oklch(92% 0.01 85);
   --text-secondary: oklch(72% 0.01 85);
-  --text-muted: oklch(50% 0.01 85);
+  --text-muted: oklch(60% 0.01 85);
   --accent: oklch(72% 0.16 85);
-  --accent-dim: oklch(25% 0.08 85);
+  --accent-text: var(--accent);
   --rule: oklch(22% 0.010 85);
   --rule-strong: oklch(35% 0.010 85);
 }
@@ -50,6 +51,11 @@ body {
   line-height: 1.6;
 }
 
+p,
+dd {
+  text-wrap: pretty;
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -65,16 +71,6 @@ body {
   animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@keyframes scroll-hint {
-  0%, 100% { opacity: 0.2; transform: translateY(0); }
-  50% { opacity: 0.5; transform: translateY(4px); }
-}
-
-.animate-scroll-hint {
-  animation: scroll-hint 2.4s ease-in-out infinite;
-  animation-delay: 1.2s;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -85,15 +81,10 @@ body {
     opacity: 1;
     transform: none;
   }
-
-  .animate-scroll-hint {
-    animation: none;
-    opacity: 0.25;
-  }
 }
 
 :focus-visible {
-  outline: 1.5px solid var(--accent);
+  outline: 1.5px solid var(--accent-text);
   outline-offset: 3px;
 }
 

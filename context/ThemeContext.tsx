@@ -36,9 +36,13 @@ export const ThemeProvider = ({ initialTheme, children }: ThemeProviderProps) =>
   const systemTheme = useSystemTheme()
   const resolvedTheme: Theme = override ?? systemTheme
 
+  // Read the media query here rather than trusting resolvedTheme: during hydration
+  // useSyncExternalStore reports the server's "light", which would strip the class
+  // the pre-paint script just set.
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', resolvedTheme === 'dark')
-  }, [resolvedTheme])
+    const isDark = override ? override === 'dark' : window.matchMedia(MQ).matches
+    document.documentElement.classList.toggle('dark', isDark)
+  }, [override, systemTheme])
 
   const setTheme = (next: Theme) => {
     setOverride(next)

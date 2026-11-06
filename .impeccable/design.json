@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-02T00:00:00Z",
+  "title": "Design System: Gordan Aleksandrovski",
+  "extensions": {
+    "colorMeta": {
+      "signal-amber": {
+        "role": "primary",
+        "displayName": "Signal Amber",
+        "canonical": "oklch(72% 0.16 85)",
+        "tonalRamp": [
+          "oklch(25% 0.06 85)",
+          "oklch(35% 0.09 85)",
+          "oklch(46% 0.12 85)",
+          "oklch(58% 0.14 85)",
+          "oklch(72% 0.16 85)",
+          "oklch(80% 0.13 85)",
+          "oklch(88% 0.08 85)",
+          "oklch(95% 0.03 85)"
+        ]
+      },
+      "signal-amber-text": {
+        "role": "primary",
+        "displayName": "Signal Amber Text",
+        "canonical": "oklch(52% 0.12 75)",
+        "purpose": "Amber as text, glyph, hover colour or focus ring on Paper (5.1:1). Night theme uses Signal Amber."
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "oklch(97% 0.008 85)",
+        "tonalRamp": [
+          "oklch(15% 0.008 85)",
+          "oklch(27% 0.008 85)",
+          "oklch(40% 0.008 85)",
+          "oklch(53% 0.008 85)",
+          "oklch(66% 0.008 85)",
+          "oklch(79% 0.008 85)",
+          "oklch(90% 0.008 85)",
+          "oklch(97% 0.008 85)"
+        ]
+      },
+      "paper-shade": {
+        "role": "neutral",
+        "displayName": "Paper Shade",
+        "canonical": "oklch(93% 0.012 85)"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(18% 0.01 85)"
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Ink Secondary",
+        "canonical": "oklch(38% 0.01 85)"
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "oklch(52% 0.01 85)"
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "oklch(84% 0.010 85)"
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Rule Strong",
+        "canonical": "oklch(65% 0.010 85)"
+      },
+      "night": {
+        "role": "neutral",
+        "displayName": "Night",
+        "canonical": "oklch(12% 0.008 85)"
+      },
+      "night-shade": {
+        "role": "neutral",
+        "displayName": "Night Shade",
+        "canonical": "oklch(17% 0.008 85)"
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Night Ink",
+        "canonical": "oklch(92% 0.01 85)"
+      },
+      "night-ink-secondary": {
+        "role": "neutral",
+        "displayName": "Night Ink Secondary",
+        "canonical": "oklch(72% 0.01 85)"
+      },
+      "night-ink-muted": {
+        "role": "neutral",
+        "displayName": "Night Ink Muted",
+        "canonical": "oklch(60% 0.01 85)"
+      },
+      "night-rule": {
+        "role": "neutral",
+        "displayName": "Night Rule",
+        "canonical": "oklch(22% 0.010 85)"
+      },
+      "night-rule-strong": {
+        "role": "neutral",
+        "displayName": "Night Rule Strong",
+        "canonical": "oklch(35% 0.010 85)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The name in the hero and the 404 heading. One per page. Line height 1.0 below md, 1.036 in Macedonian."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "The title line under the hero divider. 1.25rem below md."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Role, programme and project names. Project names 16px at md."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Every sentence. Measure capped at 500-520px; text-wrap: pretty."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Section labels, nav, toggles, disclosure toggles, periods, project years, status line, link text, stack tags."
+      },
+      "label-sm": {
+        "displayName": "Label Small",
+        "purpose": "Company and institution names, footer, mobile nav."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Column heads, technical and experience sub-labels, contact row labels. Nothing on the page is below 10px."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Hero entrance and disclosure reveal."
+      },
+      {
+        "name": "entrance",
+        "value": "fade-up 700ms, translateY(14px), delays 0/80/180/260ms",
+        "purpose": "One-time staged hero entrance."
+      },
+      {
+        "name": "reveal",
+        "value": "grid-template-rows 320ms",
+        "purpose": "Disclosure panels open and close."
+      },
+      {
+        "name": "colour-shift",
+        "value": "color 200ms",
+        "purpose": "Every hover state."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Text Link",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "Uppercase underlined link; the only button shape in the system.",
+      "html": "<a class=\"ds-link\" href=\"#\">Live site</a>",
+      "css": ".ds-link { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; transition: color 200ms; } .ds-link:hover { color: var(--accent-text); } .ds-link:focus-visible { outline: 1.5px solid var(--accent-text); outline-offset: 3px; }"
+    },
+    {
+      "name": "Disclosure Toggle",
+      "kind": "button",
+      "refersTo": "disclosure-toggle",
+      "description": "Amber +/− glyph and underlined label that reveals technical detail.",
+      "html": "<button class=\"ds-disclosure\" type=\"button\" aria-expanded=\"false\"><span class=\"ds-disclosure-glyph\" aria-hidden=\"true\">+</span><span class=\"ds-disclosure-label\">Technical detail</span></button>",
+      "css": ".ds-disclosure { display: flex; align-items: center; gap: 8px; background: none; border: 0; padding: 0; cursor: pointer; font-family: var(--font-display); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary); transition: color 200ms; } .ds-disclosure:hover { color: var(--accent-text); } .ds-disclosure:focus-visible { outline: 1.5px solid var(--accent-text); outline-offset: 3px; } .ds-disclosure-glyph { width: 10px; text-align: left; line-height: 1; color: var(--accent-text); } .ds-disclosure-label { border-bottom: 1px solid currentColor; padding-bottom: 1px; }"
+    },
+    {
+      "name": "Segment Toggle",
+      "kind": "button",
+      "refersTo": "nav-link",
+      "description": "Two-word switch for language and theme; active word in Ink.",
+      "html": "<button class=\"ds-segment\" type=\"button\" aria-label=\"Switch to Macedonian\"><span class=\"ds-segment-on\">EN</span><span class=\"ds-segment-sep\" aria-hidden=\"true\">·</span><span class=\"ds-segment-off\">MK</span></button>",
+      "css": ".ds-segment { display: flex; align-items: center; gap: 4px; background: none; border: 0; padding: 0; cursor: pointer; font-family: var(--font-display); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; } .ds-segment:focus-visible { outline: 1.5px solid var(--accent-text); outline-offset: 3px; } .ds-segment-on { color: var(--text); } .ds-segment-sep { color: var(--rule-strong); } .ds-segment-off { color: var(--text-muted); transition: color 200ms; } .ds-segment-off:hover { color: var(--text); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Fixed opaque ruled bar; active section in Signal Amber Text; 1px Signal Amber scroll-progress line.",
+      "html": "<header class=\"ds-nav\"><span class=\"ds-nav-name\">Gordan Aleksandrovski</span><nav class=\"ds-nav-links\"><a href=\"#\" class=\"ds-nav-link\">Experience</a><a href=\"#\" class=\"ds-nav-link ds-nav-link-active\">Work</a><a href=\"#\" class=\"ds-nav-link\">AI</a><a href=\"#\" class=\"ds-nav-link\">Education</a><a href=\"#\" class=\"ds-nav-link\">Contact</a></nav><span class=\"ds-nav-progress\" aria-hidden=\"true\"></span></header>",
+      "css": ".ds-nav { position: relative; display: flex; align-items: center; justify-content: space-between; height: 44px; padding: 0 48px; background: var(--bg); border-bottom: 1px solid var(--rule); } .ds-nav-name, .ds-nav-link { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 200ms; } .ds-nav-links { display: flex; gap: 32px; } .ds-nav-link:hover { color: var(--text); } .ds-nav-link-active, .ds-nav-link-active:hover { color: var(--accent-text); } .ds-nav-link:focus-visible { outline: 1.5px solid var(--accent-text); outline-offset: 3px; } .ds-nav-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--accent); transform: scaleX(0.4); transform-origin: left; }"
+    },
+    {
+      "name": "Stack Tag",
+      "kind": "chip",
+      "refersTo": "stack-tag",
+      "description": "Square hairline tag naming a technology inside the entry that used it.",
+      "html": "<span class=\"ds-tag\">Next.js</span> <span class=\"ds-tag\">PostgreSQL</span> <span class=\"ds-tag\">Terraform</span>",
+      "css": ".ds-tag { display: inline-block; font-family: var(--font-display); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); border: 1px solid var(--rule); padding: 2px 8px; }"
+    },
+    {
+      "name": "Status Line",
+      "kind": "custom",
+      "refersTo": "status-dot",
+      "description": "Amber status light and label, then the engineer-since line.",
+      "html": "<div class=\"ds-status\"><span class=\"ds-status-live\"><span class=\"ds-status-dot\" aria-hidden=\"true\"></span>Now · IT Ops &amp; Support at Avenga</span><span class=\"ds-status-sep\" aria-hidden=\"true\">/</span><span class=\"ds-status-meta\">Engineer since 2024</span></div>",
+      "css": ".ds-status { display: inline-flex; align-items: center; gap: 16px; font-family: var(--font-display); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; } .ds-status-live { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--accent-text); } .ds-status-dot { width: 6px; height: 6px; border-radius: 9999px; background: var(--accent); } .ds-status-sep { color: var(--rule-strong); } .ds-status-meta { font-weight: 500; color: var(--text-secondary); }"
+    },
+    {
+      "name": "Ledger Row",
+      "kind": "card",
+      "refersTo": "title",
+      "description": "The signature unit: period, role and company, evidence with tags, divided by hairlines.",
+      "html": "<div class=\"ds-row\"><span class=\"ds-row-period\">Sep 2025 – Jun 2026</span><div><p class=\"ds-row-title\">Junior Site Reliability / Software Engineer</p><p class=\"ds-row-sub\">Pabau Clinic Software</p></div><div><p class=\"ds-row-body\">Took SRE on-call shifts via PagerDuty; provisioned jobs, alerts and servers with Terraform.</p><span class=\"ds-tag\">Kubernetes</span></div></div>",
+      "css": ".ds-row { display: grid; grid-template-columns: 160px 1fr 1.4fr; gap: 12px 32px; padding: 32px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); } .ds-row-period { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding-top: 4px; } .ds-row-title { margin: 0; padding-top: 4px; font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text); line-height: 1.375; } .ds-row-sub { margin: 4px 0 0; font-family: var(--font-display); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); } .ds-row-body { margin: 0 0 12px; font-family: var(--font-body); font-size: 1rem; line-height: 1.625; color: var(--text-secondary); } .ds-row .ds-tag { display: inline-block; font-family: var(--font-display); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); border: 1px solid var(--rule); padding: 2px 8px; }"
+    },
+    {
+      "name": "Contact Row",
+      "kind": "custom",
+      "refersTo": "contact-row",
+      "description": "Full-width ruled row that copies or opens; turns Signal Amber Text on hover.",
+      "html": "<button class=\"ds-contact\" type=\"button\"><span class=\"ds-contact-left\"><span class=\"ds-contact-label\">Email</span><span class=\"ds-contact-value\">gordanaleksandrovski20@gmail.com</span></span><span class=\"ds-contact-ind\">→</span></button>",
+      "css": ".ds-contact { display: flex; width: 100%; align-items: center; justify-content: space-between; padding: 20px 0; background: none; border: 0; border-bottom: 1px solid var(--rule); cursor: pointer; text-align: left; } .ds-contact:focus-visible { outline: 1.5px solid var(--accent-text); outline-offset: 3px; } .ds-contact-left { display: flex; align-items: center; gap: 48px; } .ds-contact-label { width: 80px; font-family: var(--font-display); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); } .ds-contact-value { font-family: var(--font-display); font-size: 16px; letter-spacing: 0.02em; color: var(--text-secondary); transition: color 200ms; } .ds-contact-ind { font-family: var(--font-display); font-size: 14px; color: var(--text-muted); transition: color 200ms; } .ds-contact:hover .ds-contact-value, .ds-contact:hover .ds-contact-ind { color: var(--accent-text); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Engineering Ledger",
+    "overview": "The site is a record of work, kept the way an engineer keeps a ledger: ruled rows, fixed columns, dates on the left, facts on the right, nothing written in the margins. Every entry has the same shape (period, role or name, then evidence), so a reader scanning for six seconds and a reader studying for six minutes both find what they need in the same place. The one oversized moment is the name. Everything after it is set small, uppercase and exact.\n\nThe mood is plain, exact and operational, matching the CV's voice: verbs and specifics, no adjectives doing the selling. Restraint is the proof of competence here. Warm paper neutrals keep the austerity human; a single amber signal marks what is live, current or under the pointer, the way a status light does on a rack. Depth comes from hairline rules and spacing, never from shadows or fills.\n\nNothing extra. Every element on the page carries information or helps the reader reach it. Rejected outright: SaaS gloss (gradients, glass, glows), rounded card grids, template ornament with no information (registration marks, colophons, fake terminals), and dev-portfolio clichés (skill bars, logo walls, typing effects). Quality shows in how few things there are and how well each one is made: fast, accessible, bilingual, readable in both themes.",
+    "keyCharacteristics": [
+      "Ruled rows on a fixed column grid; hairlines are the structure.",
+      "Condensed uppercase display type (Oswald) over a quiet geometric body (Jost).",
+      "One accent, used as a signal: live status, active section, hover, focus, scroll progress.",
+      "Square corners everywhere; the only round shape is a status dot.",
+      "Flat surfaces; tonal layering only for a tooltip and the skip link.",
+      "Motion is short, eased and optional: one staged entrance, height reveals, colour shifts."
+    ],
+    "rules": [
+      {
+        "name": "The Status Light Rule",
+        "body": "Signal Amber means \"live, current, or here\". It marks state and interaction, never a heading, a background or a block of text. If an amber element doesn't answer \"what is active?\", it shouldn't be amber.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Hue Rule",
+        "body": "Every neutral shares hue 85 with chroma at or under 0.012. New greys are built on that hue, never pulled from a cool default palette.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Oswald labels, Jost explains. If it is a sentence, it is Jost; if it names, dates or controls something, it is Oswald uppercase. Never set a paragraph in Oswald or a label in Jost.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tracking Scales Down Rule",
+        "body": "The smaller the uppercase text, the wider its tracking: display -0.02em, headline/title 0.04em, label 0.12–0.14em, caption up to 0.18em.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ruled Row Rule",
+        "body": "New content enters as a row in an existing ledger, divided by a hairline and aligned to the section's columns. Not as a card, panel or grid tile.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Ledger Rule",
+        "body": "If something needs to stand apart, give it a hairline or more space. Never a shadow, blur or glow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do add new content as a ruled row on the section's existing column grid (`160px | 1fr | 1.4fr`, `48px | 1fr`).",
+      "Do use Oswald uppercase for anything that names, dates or controls, and Jost for every sentence.",
+      "Do keep Signal Amber for state: live, current, active, hover, focus.",
+      "Do pair every new token with its `.dark` value and check both themes and both languages (Latin and Cyrillic) before shipping.",
+      "Do honour `prefers-reduced-motion` for every animation, and keep motion under 400ms except the one-time hero entrance.",
+      "Do read colours that live outside CSS (viewport `themeColor`, the Open Graph image) from `lib/themeColors.ts`, and update its hex mirrors whenever a token in `app/globals.css` changes."
+    ],
+    "donts": [
+      "Don't add anything that doesn't carry information. If removing it loses no fact and no affordance, remove it.",
+      "Don't use shadows, gradients, glassmorphism, glows or gradient text.",
+      "Don't round corners, build card grids or bento layouts, or add icon tiles.",
+      "Don't add template ornament: registration marks, colophons, fake terminal windows, decorative numerals.",
+      "Don't add dev-portfolio clichés: skill bars, percentage meters, tech-logo walls, typing animations.",
+      "Don't list a skill without the work it was used in; stack tags live inside entries, never in a standalone grid.",
+      "Don't introduce a second accent colour or a cool grey.",
+      "Don't set body paragraphs in Oswald or wider than 520px (500px in the hero)."
+    ]
+  }
+}

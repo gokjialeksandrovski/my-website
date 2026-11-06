@@ -14,7 +14,7 @@ export const Contact = () => {
     <PageSection id="contact">
       <SectionLabel label={dict.contact.sectionLabel} />
 
-      <p className="text-base text-(--text-secondary) leading-relaxed mb-12">
+      <p className="text-base text-(--text-secondary) leading-relaxed mb-12 max-w-130">
         {dict.contact.availability}
       </p>
 
@@ -23,9 +23,14 @@ export const Contact = () => {
           <ContactRow
             key={link.id}
             link={link}
-            copyFailed={dict.contact.copyFailed}
-            copyLink={dict.contact.copyLink}
-            tooltip={dict.contactEntries[link.id]?.tooltip ?? ''}
+            strings={{
+              label: dict.contactEntries[link.id]?.label ?? link.id,
+              tooltip: dict.contactEntries[link.id]?.tooltip ?? '',
+              copyLink: dict.contact.copyLink,
+              copied: dict.contact.copied,
+              copyFailed: dict.contact.copyFailed,
+              newTab: dict.a11y.newTab,
+            }}
           />
         ))}
       </div>
@@ -35,7 +40,7 @@ export const Contact = () => {
           {dict.profile.nameFirst} {dict.profile.nameLast}
         </span>
         <span className="font-display text-[10px] tracking-[0.14em] uppercase text-(--text-muted)">
-          {dict.profile.title} — {currentYear}
+          {dict.contact.location} — {currentYear}
         </span>
       </div>
     </PageSection>

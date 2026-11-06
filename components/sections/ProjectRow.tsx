@@ -6,37 +6,26 @@ import { StackTag } from '@/components/StackTag'
 import { Collapsible } from '@/components/Collapsible'
 import { useLanguage } from '@/context/LanguageContext'
 
-interface ProjectLinksProps {
-  project: Project
-  liveLabel: string
-  githubLabel: string
+interface LiveLinkProps {
+  url?: string
+  label: string
+  newTabLabel: string
 }
 
-const ProjectLinks = ({ project, liveLabel, githubLabel }: ProjectLinksProps) => {
-  if (!project.url && !project.repoUrl) return null
+const LiveLink = ({ url, label, newTabLabel }: LiveLinkProps) => {
+  if (!url) return null
 
   return (
-    <div className="mt-4 flex gap-5">
-      {project.url && (
-        <Link
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-display text-[11px] tracking-[0.12em] uppercase text-(--text-secondary) hover:text-(--accent) transition-colors duration-200 border-b border-current pb-px"
-        >
-          {liveLabel}
-        </Link>
-      )}
-      {project.repoUrl && (
-        <Link
-          href={project.repoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-display text-[11px] tracking-[0.12em] uppercase text-(--text-secondary) hover:text-(--accent) transition-colors duration-200 border-b border-current pb-px"
-        >
-          {githubLabel}
-        </Link>
-      )}
+    <div className="mt-4">
+      <Link
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative before:absolute before:inset-x-0 before:-inset-y-1.5 font-display text-[11px] tracking-[0.12em] uppercase text-(--text-secondary) hover:text-(--accent-text) transition-colors duration-200 border-b border-current pb-px"
+      >
+        {label}
+        <span className="sr-only"> ({newTabLabel})</span>
+      </Link>
     </div>
   )
 }
@@ -49,21 +38,16 @@ export const ProjectRow = ({ project }: { project: Project }) => {
     <div className="py-8 grid grid-cols-1 md:grid-cols-[48px_1fr] gap-4 md:gap-8">
       <div className="pt-1">
         <span className="font-display text-[11px] tracking-widest tabular-nums text-(--text-muted)">
-          {project.number}
+          {project.year}
         </span>
       </div>
 
       <div>
-        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-          <h3 className="font-display text-[13px] md:text-base tracking-[0.04em] uppercase font-semibold text-(--text)">
-            {project.name}
-          </h3>
-          <span className="font-display text-[9px] tracking-[0.14em] uppercase text-(--text-muted)">
-            {project.year}
-          </span>
-        </div>
+        <h3 className="font-display text-[13px] md:text-base tracking-[0.04em] uppercase font-semibold text-(--text)">
+          {project.name}
+        </h3>
 
-        <p className="mt-2 text-base text-(--text-secondary) leading-relaxed max-w-145">
+        <p className="mt-2 text-base text-(--text-secondary) leading-relaxed max-w-130">
           {project.summary ?? project.description}
         </p>
 
@@ -73,11 +57,7 @@ export const ProjectRow = ({ project }: { project: Project }) => {
           ))}
         </div>
 
-        <ProjectLinks
-          project={project}
-          liveLabel={dict.projects.live}
-          githubLabel={dict.projects.github}
-        />
+        <LiveLink url={project.url} label={dict.projects.live} newTabLabel={dict.a11y.newTab} />
 
         {project.summary && (
           <Collapsible
@@ -86,10 +66,10 @@ export const ProjectRow = ({ project }: { project: Project }) => {
             buttonColorClass="text-(--text-muted)"
           >
             {project.technicalSections ? (
-              <div className="mt-3 space-y-5 max-w-145">
+              <div className="mt-3 space-y-5 max-w-130">
                 {project.technicalSections.map(({ label, content }) => (
                   <div key={label}>
-                    <p className="font-display text-[9px] tracking-[0.18em] uppercase text-(--text-muted) mb-1.5">
+                    <p className="font-display text-[10px] tracking-[0.18em] uppercase text-(--text-muted) mb-1.5">
                       {label}
                     </p>
                     <p className="text-base text-(--text-secondary) leading-relaxed">
@@ -99,7 +79,7 @@ export const ProjectRow = ({ project }: { project: Project }) => {
                 ))}
               </div>
             ) : (
-              <p className="mt-3 text-base text-(--text-secondary) leading-relaxed max-w-145">
+              <p className="mt-3 text-base text-(--text-secondary) leading-relaxed max-w-130">
                 {project.description}
               </p>
             )}

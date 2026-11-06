@@ -2,6 +2,7 @@ import { Nav } from '@/components/Nav'
 import { Hero } from '@/components/sections/Hero'
 import { Experience } from '@/components/sections/Experience'
 import { Projects } from '@/components/sections/Projects'
+import { AiEngineering } from '@/components/sections/AiEngineering'
 import { Education } from '@/components/sections/Education'
 import { Contact } from '@/components/sections/Contact'
 
@@ -12,7 +13,7 @@ const personSchema = {
   '@type': 'Person',
   name: 'Gordan Aleksandrovski',
   url: BASE_URL,
-  jobTitle: 'Fullstack Developer',
+  jobTitle: 'Full-Stack Engineer · Site Reliability',
   email: 'gordanaleksandrovski20@gmail.com',
   sameAs: [
     'https://github.com/gokjialeksandrovski',
@@ -42,6 +43,7 @@ const Home = () => (
       <Hero />
       <Experience />
       <Projects />
+      <AiEngineering />
       <Education />
       <Contact />
     </main>

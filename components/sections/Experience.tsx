@@ -39,7 +39,7 @@ interface ExperienceRowProps {
 }
 
 const ExperienceRow = ({ entry, periodLabel, currentPositionLabel }: ExperienceRowProps) => (
-  <div className="py-8 grid grid-cols-1 md:grid-cols-[160px_1fr_1.4fr] gap-y-3 gap-x-8">
+  <div className="py-8 last:pb-0 grid grid-cols-1 md:grid-cols-[160px_1fr_1.4fr] gap-y-3 gap-x-8">
     <div className="flex items-center gap-2 self-start pt-1">
       <span className="font-display text-[11px] tracking-widest uppercase text-(--text-muted) leading-snug">
         {periodLabel}

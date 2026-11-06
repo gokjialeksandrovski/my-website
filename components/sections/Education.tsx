@@ -12,7 +12,7 @@ interface EducationRowProps {
 }
 
 const EducationRow = ({ entry, periodLabel }: EducationRowProps) => (
-  <div className="py-8 grid grid-cols-1 md:grid-cols-[160px_1fr] gap-y-3 gap-x-8">
+  <div className="py-8 last:pb-0 grid grid-cols-1 md:grid-cols-[160px_1fr] gap-y-3 gap-x-8">
     <span className="font-display text-[11px] tracking-widest uppercase text-(--text-muted) leading-snug pt-0.5">
       {periodLabel}
     </span>

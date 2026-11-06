@@ -183,7 +183,7 @@ Inside each band the ledger grid takes over, collapsing to a single column below
 - **Projects:** `48px | 1fr` (year in tabular figures, then content). The year replaced an index number: list order carries no meaning, and the year does.
 - **Hero meta:** `1fr | 1.6fr` (title line, then bio).
 
-Rows are 32px top and bottom, divided by hairlines; the last row in a band drops its bottom padding, so every band ends exactly on the band padding and the space above and below each section hairline matches. Section labels sit 40px above their first row. The hero sizes to its content at every width (112px top, 48px bottom at `md`), so on a 900px-tall laptop screen the Experience label shows in the first viewport. The fixed header is 40px (44px at `md`); on mobile a second 36px row carries the section links.
+Rows are 32px top and bottom, divided by hairlines; the last row in a band drops its bottom padding, so every band ends exactly on the band padding and the space above and below each section hairline matches. From `md` up, ledger columns align on their first baseline (`items-baseline`), so a period or year sits on the same line as the name beside it whatever the size difference; never nudge a column with top padding. Section labels sit 40px above their first row. The hero sizes to its content at every width (112px top, 48px bottom at `md`), so on a 900px-tall laptop screen the Experience label shows in the first viewport. The fixed header is 40px (44px at `md`); on mobile a second 36px row carries the section links.
 
 **The Ruled Row Rule.** New content enters as a row in an existing ledger, divided by a hairline and aligned to the section's columns. Not as a card, panel or grid tile.
 

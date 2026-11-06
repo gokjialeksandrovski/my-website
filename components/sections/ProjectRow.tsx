@@ -35,8 +35,8 @@ export const ProjectRow = ({ project }: { project: Project }) => {
   const collapsibleId = `technical-${project.id}`
 
   return (
-    <div className="py-8 last:pb-0 grid grid-cols-1 md:grid-cols-[48px_1fr] gap-4 md:gap-8">
-      <div className="pt-1">
+    <div className="py-8 last:pb-0 grid grid-cols-1 md:grid-cols-[48px_1fr] md:items-baseline gap-4 md:gap-8">
+      <div>
         <span className="font-display text-[11px] tracking-widest tabular-nums text-(--text-muted)">
           {project.year}
         </span>

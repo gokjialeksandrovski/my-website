@@ -41,6 +41,7 @@ export const en: Dictionary = {
     sectionLabel: "02 — Selected Work",
     technicalToggle: "How it's built",
     live: "Live →",
+    personal: "Personal",
     source: "Source →",
   },
   contact: {

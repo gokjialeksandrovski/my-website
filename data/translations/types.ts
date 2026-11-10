@@ -64,6 +64,7 @@ export interface Dictionary {
     readonly technicalToggle: string
     readonly live: string
     readonly source: string
+    readonly personal: string
   }
   readonly contact: {
     readonly sectionLabel: string

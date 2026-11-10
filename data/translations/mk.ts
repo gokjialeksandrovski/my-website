@@ -41,6 +41,7 @@ export const mk: Dictionary = {
     sectionLabel: "02 — Избрани Проекти",
     technicalToggle: "Како е изградено",
     live: "Посети →",
+    personal: "Личен",
     source: "Код →",
   },
   contact: {

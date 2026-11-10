@@ -54,8 +54,13 @@ export const ProjectRow = ({ project }: { project: Project }) => {
       </div>
 
       <div>
-        <h3 className="font-display text-[13px] md:text-base tracking-[0.04em] uppercase font-semibold text-(--text)">
-          {project.name}
+        <h3 className="flex flex-wrap items-center gap-x-3 gap-y-1 font-display text-[13px] md:text-base tracking-[0.04em] uppercase font-semibold text-(--text)">
+          {project.name}{' '}
+          {project.personal && (
+            <span className="font-normal text-[10px] tracking-[0.18em] text-(--text-muted) border border-dashed border-(--rule) px-1.5 py-px">
+              {dict.projects.personal}
+            </span>
+          )}
         </h3>
 
         <p className="mt-2 text-base text-(--text-secondary) leading-relaxed max-w-130">

@@ -14,6 +14,7 @@ export interface Project {
   readonly url?: string
   readonly repoUrl?: string
   readonly year: string
+  readonly personal?: true
 }
 
 export const projects: readonly Project[] = [
@@ -59,46 +60,6 @@ export const projects: readonly Project[] = [
       "Git",
     ],
     url: "https://korrmotive.com",
-    year: "2026",
-  },
-  {
-    id: "proj-levelspoon",
-    name: "Levelspoon",
-    summary:
-      "Meal-logging app I built for myself and run on my own Debian server. Many products sold in North Macedonia return nothing from a barcode lookup, so a Python OCR service reads the nutrition label from a photo instead. My first Python project. Self-hosted in Docker and reached over Tailscale, with nothing exposed to the public internet.",
-    technicalSections: [
-      {
-        label: "OCR and data",
-        content:
-          "Label photos go to a FastAPI + PaddleOCR service. Barcodes are looked up in the app's own database first, then Open Food Facts; 246 standard foods are seeded for loose food. Each product stores nutrition per 100 g, and totals are computed from the amount eaten. Products are shared between users, and a user can correct a figure for their own account without changing anyone else's.",
-      },
-      {
-        label: "Optional AI",
-        content:
-          "Runs on the user's own Gemini API key (Gemini Flash). It estimates grams eaten from a photo and gives a rough itemised estimate for a described meal. Estimates are private and marked as estimates. Label figures never come from an LLM.",
-      },
-      {
-        label: "Self-hosting",
-        content:
-          "Each service is its own Docker container with --restart unless-stopped, published on 127.0.0.1 only. The repo is cloned as a non-root user through a read-only deploy key scoped to that repo. Secrets live outside the repo in a 700 directory with 600 files. Migrations run in a throwaway Node container because the server has no Node.",
-      },
-      {
-        label: "Tests",
-        content:
-          "Vitest against Postgres, Playwright end-to-end with mocked providers, and Python unit tests for the OCR service. Linted with ESLint and Ruff.",
-      },
-    ],
-    stack: [
-      "Next.js",
-      "TypeScript",
-      "Python",
-      "FastAPI",
-      "PostgreSQL",
-      "Docker",
-      "Tailscale",
-      "Linux",
-    ],
-    repoUrl: "https://github.com/gokjialeksandrovski/levelspoon",
     year: "2026",
   },
   {
@@ -182,5 +143,46 @@ export const projects: readonly Project[] = [
     ],
     url: "https://westprint.mk",
     year: "2024",
+  },
+  {
+    id: "proj-levelspoon",
+    name: "Levelspoon",
+    summary:
+      "Meal-logging app I built for myself and run on my own Debian server. Many products sold in North Macedonia return nothing from a barcode lookup, so a Python OCR service reads the nutrition label from a photo instead. My first Python project. Self-hosted in Docker and reached over Tailscale, with nothing exposed to the public internet.",
+    technicalSections: [
+      {
+        label: "OCR and data",
+        content:
+          "Label photos go to a FastAPI + PaddleOCR service. Barcodes are looked up in the app's own database first, then Open Food Facts; 246 standard foods are seeded for loose food. Each product stores nutrition per 100 g, and totals are computed from the amount eaten. Products are shared between users, and a user can correct a figure for their own account without changing anyone else's.",
+      },
+      {
+        label: "Optional AI",
+        content:
+          "Runs on the user's own Gemini API key (Gemini Flash). It estimates grams eaten from a photo and gives a rough itemised estimate for a described meal. Estimates are private and marked as estimates. Label figures never come from an LLM.",
+      },
+      {
+        label: "Self-hosting",
+        content:
+          "Each service is its own Docker container with --restart unless-stopped, published on 127.0.0.1 only. The repo is cloned as a non-root user through a read-only deploy key scoped to that repo. Secrets live outside the repo in a 700 directory with 600 files. Migrations run in a throwaway Node container because the server has no Node.",
+      },
+      {
+        label: "Tests",
+        content:
+          "Vitest against Postgres, Playwright end-to-end with mocked providers, and Python unit tests for the OCR service. Linted with ESLint and Ruff.",
+      },
+    ],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "Docker",
+      "Tailscale",
+      "Linux",
+    ],
+    repoUrl: "https://github.com/gokjialeksandrovski/levelspoon",
+    year: "2026",
+    personal: true,
   },
 ];

@@ -13,7 +13,7 @@ Read `docs/ARCHITECTURE.md` before doing anything. It covers the stack, file lay
 | Doc | Read when |
 |---|---|
 | `docs/ARCHITECTURE.md` | Always |
-| `docs/PRODUCT.md` | Writing or changing copy, adding a project/role/skill, or touching anything a recruiter reads |
+| `docs/PRODUCT.md` (local only, git-ignored) | Writing or changing copy, adding a project/role/skill, or touching any reader-facing text |
 | `docs/DESIGN.md` | Changing any component, style, token, layout or animation |
 
 When a change makes one of these docs wrong, update the doc in the same change. Docs describe what exists, not plans.
@@ -28,7 +28,7 @@ Build and maintain the portfolio site in this repo.
 
 Do NOT work on:
 - `../cv/`. The CV is the source of truth for roles, dates, titles and project years. Align the site to it, never the reverse.
-- Content for IT Ops / Support roles or freelance clients (not target audiences).
+- Content outside the audiences named in `docs/PRODUCT.md`.
 - Anything listed as absent in `docs/PRODUCT.md` › Evidence on Hand (case studies, testimonials, metrics, certifications, logos). Never fabricate it.
 
 ## Environment

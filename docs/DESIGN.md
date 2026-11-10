@@ -209,7 +209,7 @@ Square. Every border, tag, tooltip and focus outline has 0px corners. The single
 Two words separated by a Rule Strong `·`: `EN · MK`, `Light · Dark`. The active segment is Ink; the inactive one is Ink Muted and turns Ink on hover. One button toggles both; its accessible name says where it switches to.
 
 ### Stack Tags
-- **Style:** Label size (11px, 0.12em), Ink Secondary, 1px Rule border, square, 2px × 8px padding, 8px gaps. Recruiters scan tags for keywords, so they are not set small or faint.
+- **Style:** Label size (11px, 0.12em), Ink Secondary, 1px Rule border, square, 2px × 8px padding, 8px gaps. Readers scan tags for keywords, so they are not set small or faint.
 - **State:** none. Tags are evidence, not filters. They always sit inside the entry where the skill was used.
 
 ### Status Dot and Status Line

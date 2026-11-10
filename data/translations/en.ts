@@ -111,7 +111,7 @@ The one thing I won't skip is accounting for preferences that aren't mine. Every
   projectEntries: {
     "proj-korrmotive": {
       summary:
-        "Automotive news and reviews site for a Macedonian journalist, built solo from design to deployment. Migrated 229 articles and 1,991 images from Wix in one scripted import; he has published about 10 posts a month from the new admin panel since. Deploys are zero-downtime through GitHub Actions, with weekly backups. Lighthouse: 95+ performance on mobile, 100 for accessibility and SEO.",
+        "Automotive news and reviews site for a Macedonian journalist, built solo from design to deployment. Migrated 229 articles and 1,991 images from Wix in one scripted import; he has published about 10 posts a month from the new admin panel since. GitHub Actions deploys it with zero downtime, and backups run weekly. Lighthouse: 95+ performance on mobile, 100 for accessibility and SEO.",
       technicalSections: {
         "Data migration":
           "Parsed the Wix CSV export, pulled every image from their CDN, re-uploaded to Payload CMS, and rebuilt the full Lexical AST from scratch. Custom Lexical editor blocks for carousel and collage media.",

@@ -20,7 +20,7 @@ export const projects: readonly Project[] = [
     id: "proj-korrmotive",
     name: "Korrmotive",
     summary:
-      "Automotive news and reviews site for a Macedonian journalist, built solo from design to deployment. Migrated 229 articles and 1,991 images from Wix in one scripted import; he has published about 10 posts a month from the new admin panel since. Deploys are zero-downtime through GitHub Actions, with weekly backups. Lighthouse: 95+ performance on mobile, 100 for accessibility and SEO.",
+      "Automotive news and reviews site for a Macedonian journalist, built solo from design to deployment. Migrated 229 articles and 1,991 images from Wix in one scripted import; he has published about 10 posts a month from the new admin panel since. GitHub Actions deploys it with zero downtime, and backups run weekly. Lighthouse: 95+ performance on mobile, 100 for accessibility and SEO.",
     technicalSections: [
       {
         label: "Data migration",

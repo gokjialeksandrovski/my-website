@@ -8,7 +8,7 @@ web
 
 ## Users
 
-Primary readers are recruiters and engineering managers hiring for two role families:
+Primary readers are recruiters and engineering managers hiring for two role families, in priority order (SRE / DevOps first, full-stack second; all copy is ordered that way):
 
 - **SRE / DevOps** — reliability, infrastructure and platform roles (on-call, Kubernetes, Terraform, monitoring).
 - **Full-stack / Software Engineer** — product engineering roles (Next.js, TypeScript, Node, PostgreSQL).
@@ -34,7 +34,7 @@ The current role (Associate IT Operations and Support Engineer at Avenga) is IT 
 ## Operating Context
 
 - Single-page portfolio at gordanaleksandrovski.com, deployed on Vercel (free tier), with Vercel Web Analytics.
-- Sections in order: Hero, Experience, Projects (Selected Work), AI-Assisted Engineering (how the work gets done with Claude Code; mirrors the CV section), Education, Contact. Plus a 404 page and a generated Open Graph image.
+- Sections in order: Hero, Experience, Projects (Selected Work), Education, AI-Assisted Engineering (one paragraph on working with Claude Code; mirrors the CV section), Contact. Plus a 404 page and a generated Open Graph image.
 - All content is static and versioned in the repo. Stack, file layout and data files: `docs/ARCHITECTURE.md`.
 - The CV (`../cv/`) is the companion artifact (principle 3).
 
@@ -42,28 +42,31 @@ The current role (Associate IT Operations and Support Engineer at Avenga) is IT 
 
 - No database, no CMS, no client-side data fetching.
 - EN/MK language toggle across all copy; light/dark theme with cookie persistence and system-preference fallback, resolved server-side.
-- Contact: email copy-to-clipboard, GitHub and LinkedIn links.
+- Contact: email copy-to-clipboard, GitHub and LinkedIn links, and the CV as a PDF (`public/Gordan-Aleksandrovski-CV.pdf`, exported from `../cv/cv.html`; re-export it whenever the CV changes).
 - Project rows expand to technical detail (architecture, security, performance, infrastructure).
 - Free-tier hosting: keep dependencies minimal and the site fast by default.
 
 ## Brand Commitments
 
-- Name: **Gordan Aleksandrovski**. Title line: **Full-Stack Engineer · Site Reliability**.
+- Name: **Gordan Aleksandrovski**. Title line: **DevOps · Full-Stack Engineer** (a headline only; job titles in Experience stay exactly as held).
 - Contact: Skopje, North Macedonia · gordanaleksandrovski20@gmail.com · gordanaleksandrovski.com · github.com/gokjialeksandrovski · linkedin.com/in/gordan-aleksandrovski-99a62a202.
 - Voice: first-person, plain and concrete. Verbs and specifics ("Wrote the migration myself", "shipped a working product in 48 hours"), no buzzwords or self-praise adjectives. Same voice in EN and MK.
 
 ## Evidence on Hand
 
 - Experience (canonical; CV and website must match exactly):
-  - Avenga: Associate IT Operations and Support Engineer (Oct 2026 – Present).
+  - Avenga: Associate IT Operations and Support Engineer (Oct 2026 – Present). Still onboarding: describe the team and rotation joined, not tasks performed.
+  - WestPrint, Medical Faculty, Korrmotive: Freelance Full-Stack Engineer (Oct 2024 – Oct 2026).
   - Pabau Clinic Software: Junior Site Reliability / Software Engineer (Sep 2025 – Jun 2026).
   - Pabau Clinic Software: Junior Software Engineer (May 2025 – Aug 2025).
   - Pabau Clinic Software: Software Engineer (Internship) (Feb 2025 – Apr 2025).
   - Brainster: Hackathon Winner (Aug 2024).
-- Projects, each with a live production link: Korrmotive (korrmotive.com, 2026), Medical Faculty department platform for Ss. Cyril and Methodius University (katedri.medf.ukim.edu.mk, 2025), WestPrint (westprint.mk).
-- Education: Brainster Front-End Development Academy (Sep 2023 – Oct 2024); Natural Sciences and Mathematics, Public Secondary School "Georgi Dimitrov" (Sep 2018 – Jun 2022).
+- Client projects, each with a live production link: Korrmotive (korrmotive.com, 2026), Medical Faculty department platform for Ss. Cyril and Methodius University (katedri.medf.ukim.edu.mk, 2025), WestPrint (westprint.mk, 2024).
+- Numbers cleared for publication: Korrmotive (229 articles and 1,991 images migrated, about 10 posts a month since, Lighthouse 95+ mobile performance and 100 accessibility/SEO); Medical Faculty (37 departments, 364 subjects, 66 department editor accounts, never "professors"); WestPrint (29 products, 55 services, 50+ inquiries a month); Pabau ("4,000+ practices", the wording on pabau.com; about three alerts an hour on call).
+- Levelspoon (2026): own self-hosted project. No link until its repo is public, no user count, no server hardware.
+- Education: Brainster Front-End Development Academy (Sep 2023 – Oct 2024). The secondary-school entry is on the CV only.
 - The site's own public source code.
-- Absent, do not fabricate: case studies (client work shows live production links instead), testimonials, references, metrics such as uptime percentages or traffic numbers, certifications, client logos.
+- Absent, do not fabricate: case studies (client work shows live production links instead), testimonials, references, metrics beyond the cleared numbers above (no uptime percentages or traffic numbers), certifications, client logos.
 
 ## Product Principles
 

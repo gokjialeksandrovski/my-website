@@ -9,7 +9,7 @@ import { useLanguage } from '@/context/LanguageContext'
 import { handleHashClick } from '@/lib/scrollToHash'
 import type { Dictionary } from '@/data/translations/types'
 
-const SECTION_IDS = ['experience', 'projects', 'ai-engineering', 'education', 'contact'] as const
+const SECTION_IDS = ['experience', 'projects', 'education', 'ai-engineering', 'contact'] as const
 type SectionId = (typeof SECTION_IDS)[number]
 
 // A section counts as active once its top passes just under the fixed header (about 80px tall on mobile).
@@ -27,8 +27,8 @@ type NavLinkConfig = {
 const NAV_LINK_CONFIGS: readonly NavLinkConfig[] = [
   { href: '#experience', labelKey: 'experience', id: 'experience' },
   { href: '#projects', labelKey: 'work', id: 'projects' },
-  { href: '#ai-engineering', labelKey: 'ai', id: 'ai-engineering' },
   { href: '#education', labelKey: 'education', id: 'education' },
+  { href: '#ai-engineering', labelKey: 'ai', id: 'ai-engineering' },
   { href: '#contact', labelKey: 'contact', id: 'contact' },
 ] as const
 

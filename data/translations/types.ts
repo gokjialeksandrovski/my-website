@@ -22,11 +22,6 @@ export interface EducationEntryTranslation {
   readonly note: string
 }
 
-export interface AiPractice {
-  readonly label: string
-  readonly text: string
-}
-
 export interface Dictionary {
   readonly nav: {
     readonly skipToContent: string
@@ -55,8 +50,6 @@ export interface Dictionary {
     readonly back: string
   }
   readonly hero: {
-    readonly engineerSince: string
-    readonly since: string
     readonly philosophyToggle: string
   }
   readonly experience: {
@@ -84,7 +77,7 @@ export interface Dictionary {
   }
   readonly aiEngineering: {
     readonly sectionLabel: string
-    readonly practices: readonly AiPractice[]
+    readonly text: string
   }
   readonly profile: {
     readonly nameFirst: string

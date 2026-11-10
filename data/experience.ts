@@ -18,8 +18,26 @@ export const experience: readonly ExperienceEntry[] = [
     company: "Avenga",
     period: { start: "2026-10", end: "present" },
     description:
-      "Avenga is an international IT services company. I'm on the IT operations and support team for a telecom client, monitoring their systems and responding to alerts.",
+      "Avenga is an international IT services company. Joined the IT operations and support team for a telecom client: L1/L2 monitoring and incident response across a rotating shift schedule that includes nights and weekends. Currently onboarding.",
     stack: ["Jira", "Confluence"],
+  },
+  {
+    id: "exp-freelance",
+    role: "Freelance Full-Stack Engineer",
+    company: "WestPrint, Medical Faculty, Korrmotive",
+    period: { start: "2024-10", end: "2026-10" },
+    description:
+      "Build and run sites for clients, solo, from design to deployment: WestPrint (2024), the Medical Faculty platform (2025) and Korrmotive (2026). After leaving Pabau in June 2026 I did this full-time: Korrmotive went live in late June, and by mid-August had a custom admin, video, reader reactions and captcha. I still maintain Korrmotive in production. Details are under Selected Work.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Payload CMS",
+      "Strapi",
+      "PostgreSQL",
+      "Nginx",
+      "GitHub Actions (CI/CD)",
+      "Hetzner",
+    ],
   },
   {
     id: "exp-pabau-sre",
@@ -27,7 +45,7 @@ export const experience: readonly ExperienceEntry[] = [
     company: "Pabau Clinic Software",
     period: { start: "2025-09", end: "2026-06" },
     description:
-      "Took bi-weekly SRE on-call shifts via PagerDuty and DevOps tasks covering the whole infrastructure. Used New Relic to diagnose slow queries and CPU/memory spikes, and flagged a compromised SendGrid account from a traced request spike.\n\nMonitored and recreated Kubernetes pods in Rancher on DigitalOcean for prod, staging and QA, and rotated secrets and JWTs monthly from Jenkins. Restarted Docker containers, truncated container and server logs, and updated an image for the move to Bun. Provisioned jobs, alerts and servers with Terraform, brought up two servers in TypeScript Pulumi for Rancher 2, and registered self-hosted Bitbucket runners on Hetzner with SOPS-encrypted secrets. Stored clinic data backups and CDN images in AWS S3.\n\nOn the calendar team, shipped a full-stack \"show deactivated staff\" toggle: a NestJS resolver and lazy GraphQL query for their past shifts and appointments.",
+      "Alternated weeks between SRE on-call via PagerDuty and full-stack work, on a platform used by 4,000+ practices; on-call shifts averaged about three alerts an hour. After an account-takeover attack went unnoticed, wrote a New Relic alert for abnormal reminder volume. When a second compromised account began draining the company's SendGrid credits, the alert paged me on call; I traced the spike to a single user in the logs and escalated, and access was cut within minutes. Also wrote alerts for connection pool exhaustion, disk usage and slow queries, and tuned the Postgres CPU/RAM alert to stop firing during normal peak load.\n\nIn Terraform, added a retry job for the daily client database backups and gave the Docker image-tag cleanup job a dry-run mode and a keep-list, adapting existing modules, with senior review before merge. Monitored and recreated Kubernetes pods in Rancher on DigitalOcean for prod, staging and QA, and rotated secrets and JWTs monthly from Jenkins. Registered self-hosted Bitbucket runners on Hetzner with SOPS-encrypted secrets, and updated a Docker image for the move to Bun. Stored clinic data backups and CDN images in AWS S3.\n\nOn the calendar team, shipped a full-stack \"show deactivated staff\" toggle: a NestJS resolver and lazy GraphQL query for their past shifts and appointments.",
     stack: [
       "PagerDuty",
       "New Relic",
@@ -36,7 +54,6 @@ export const experience: readonly ExperienceEntry[] = [
       "DigitalOcean",
       "Docker",
       "Terraform",
-      "Pulumi",
       "Jenkins",
       "Bitbucket Pipelines",
       "SOPS",
@@ -53,7 +70,7 @@ export const experience: readonly ExperienceEntry[] = [
     company: "Pabau Clinic Software",
     period: { start: "2025-05", end: "2025-08" },
     description:
-      "Full-stack development on the calendar team. Picked up bugs and features from other teams too.",
+      "Given a ticket for a \"Confirmed\" icon on calendar appointment blocks, I traced the data from the icon back to the email-confirmation handler before shipping. That flow never set the status the spec relied on, so the icon would never have shown for patients confirming by email. Fixed it in two stages: a shared frontend helper with unit tests that reads either signal, then a backend change and a per-clinic backfill so the status is set consistently.\n\nBuilt the client invoices table with the UI/UX designer. The columns didn't fit the design, and the first proposal was to move some of them into a details modal. I proposed icons with tooltips instead (initial avatars, note and location icons, a truncated item list), which kept every field visible at a glance. Then built filters for the table.\n\nBuilt a reusable three-dot options menu shared by the invoices and payments tables and their edit modals, with LaunchDarkly flags deciding which options show; a shared time picker that shows the duration between start and end; and a NestJS controller that posts feature-usage events to Slack through the internal backend service. Also picked up bugs and features from other teams.",
     stack: [
       "Next.js",
       "TypeScript",
@@ -62,6 +79,9 @@ export const experience: readonly ExperienceEntry[] = [
       "Hasura",
       "Prisma",
       "PostgreSQL",
+      "LaunchDarkly",
+      "Jira",
+      "Confluence",
     ],
   },
   {

@@ -10,18 +10,9 @@ export const AiEngineering = () => {
   return (
     <PageSection id="ai-engineering">
       <SectionLabel label={dict.aiEngineering.sectionLabel} />
-      <dl className="divide-y divide-(--rule)">
-        {dict.aiEngineering.practices.map(({ label, text }) => (
-          <div key={label} className="py-8 last:pb-0 grid grid-cols-1 md:grid-cols-[160px_1fr] md:items-baseline gap-y-3 gap-x-8">
-            <dt className="font-display text-[11px] tracking-widest uppercase text-(--text-muted) leading-snug">
-              {label}
-            </dt>
-            <dd className="text-base text-(--text-secondary) leading-relaxed max-w-130">
-              {text}
-            </dd>
-          </div>
-        ))}
-      </dl>
+      <p className="text-base text-(--text-secondary) leading-relaxed max-w-130">
+        {dict.aiEngineering.text}
+      </p>
     </PageSection>
   )
 }

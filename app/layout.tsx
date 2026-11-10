@@ -58,9 +58,9 @@ const BASE_TWITTER = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gordanaleksandrovski.com"),
-  title: "Gordan Aleksandrovski — Full-Stack Engineer · Site Reliability",
+  title: "Gordan Aleksandrovski — DevOps · Full-Stack Engineer",
   description:
-    "Full-stack engineer with SRE and production operations experience. Builds and runs web applications with Next.js, TypeScript and Node.js.",
+    "DevOps and full-stack engineer with SRE on-call and production operations experience. Builds and runs web applications with Next.js, TypeScript and Node.js.",
   authors: [{ name: "Gordan Aleksandrovski", url: "https://gordanaleksandrovski.com" }],
   alternates: {
     canonical: "https://gordanaleksandrovski.com",
@@ -69,13 +69,13 @@ export const metadata: Metadata = {
     ...BASE_OPEN_GRAPH,
     title: "Gordan Aleksandrovski",
     description:
-      "Full-stack engineer with SRE and production operations experience.",
+      "DevOps and full-stack engineer with SRE on-call and production operations experience.",
   },
   twitter: {
     ...BASE_TWITTER,
-    title: "Gordan Aleksandrovski — Full-Stack Engineer · Site Reliability",
+    title: "Gordan Aleksandrovski — DevOps · Full-Stack Engineer",
     description:
-      "Full-stack engineer with SRE and production operations experience. Builds and runs web applications with Next.js, TypeScript and Node.js.",
+      "DevOps and full-stack engineer with SRE on-call and production operations experience. Builds and runs web applications with Next.js, TypeScript and Node.js.",
   },
 };
 

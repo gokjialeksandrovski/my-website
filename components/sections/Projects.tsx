@@ -13,7 +13,7 @@ export const Projects = () => {
     const t = dict.projectEntries[project.id]
     if (!t) return project
 
-    const translatedSections = project.technicalSections?.map((section) => ({
+    const translatedSections = project.technicalSections.map((section) => ({
       ...section,
       content: t.technicalSections[section.label] ?? section.content,
     }))

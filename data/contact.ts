@@ -23,4 +23,10 @@ export const contactLinks: readonly ContactLink[] = [
     url: 'https://www.linkedin.com/in/gordan-aleksandrovski-99a62a202/',
     copyValue: 'https://www.linkedin.com/in/gordan-aleksandrovski-99a62a202/',
   },
+  {
+    id: 'cv',
+    value: 'Gordan-Aleksandrovski-CV.pdf',
+    url: '/Gordan-Aleksandrovski-CV.pdf',
+    copyValue: 'https://gordanaleksandrovski.com/Gordan-Aleksandrovski-CV.pdf',
+  },
 ]

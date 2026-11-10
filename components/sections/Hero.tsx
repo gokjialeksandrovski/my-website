@@ -24,10 +24,6 @@ export const Hero = () => {
             />
             {dict.profile.statusLabel}
           </span>
-          <span className="hidden sm:inline text-(--rule-strong)" aria-hidden="true">/</span>
-          <span className="font-medium text-(--text-secondary)">
-            {dict.hero.engineerSince} {dict.hero.since}
-          </span>
         </div>
       </div>
 

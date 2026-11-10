@@ -17,6 +17,7 @@ Stack, file layout, routes, runtime behaviour, deployment and local commands for
 ## Structure
 
 ```
+public/         the CV PDF linked from Contact, exported from ../cv/cv.html
 app/            routes: layout, page, not-found, opengraph-image, robots, sitemap, icon.svg, globals.css
 components/     Nav, toggles, Collapsible, PageSection, SectionLabel, StackTag, HeroShell
   sections/     Hero, Experience, Projects (+ ProjectRow), AiEngineering, Education, Contact (+ ContactRow)
@@ -31,7 +32,7 @@ docs/           this file, PRODUCT.md, DESIGN.md
 
 | Route | File | Notes |
 |---|---|---|
-| `/` | `app/page.tsx` | Single page: Hero, Experience, Projects, AI-Assisted Engineering, Education, Contact. Emits `Person` and `WebSite` JSON-LD |
+| `/` | `app/page.tsx` | Single page: Hero, Experience, Projects, Education, AI-Assisted Engineering, Contact. Emits `Person` and `WebSite` JSON-LD |
 | 404 | `app/not-found.tsx` | Server shell; bilingual copy in `app/_components/NotFoundContent.tsx` (client, reads `useLanguage()`) |
 | `/opengraph-image` | `app/opengraph-image.tsx` | Generated OG image (Satori) |
 | `/robots.txt` | `app/robots.ts` | Allow all, points to sitemap |

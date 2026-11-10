@@ -28,8 +28,6 @@ export const en: Dictionary = {
     back: "Back to the portfolio",
   },
   hero: {
-    engineerSince: "Engineer since",
-    since: "2024",
     philosophyToggle: "How I approach the work",
   },
   experience: {
@@ -46,54 +44,27 @@ export const en: Dictionary = {
   },
   contact: {
     sectionLabel: "05 — Contact",
-    availability: "Hiring for an SRE, DevOps or full-stack role? Email me. To see how I write code first, the GitHub link opens this site's source.",
+    availability: "Email is the fastest way to reach me. The GitHub link opens this site's source.",
     location: "Skopje, North Macedonia",
     copyFailed: "Couldn't copy. Select the address and copy it:",
     copied: "Copied to clipboard",
     copyLink: "Copy link",
   },
   education: {
-    sectionLabel: "04 — Education",
+    sectionLabel: "03 — Education",
   },
   aiEngineering: {
-    sectionLabel: "03 — AI-Assisted Engineering",
-    practices: [
-      {
-        label: "Daily use",
-        text: "I use Claude Code for most of my work: features, debugging, infrastructure, docs, and this site. I read every diff before it ships.",
-      },
-      {
-        label: "Plans and playbooks",
-        text: "I brainstorm before coding. Complex features also get a written plan, which I later delete and replace with a playbook of that feature's architecture and rules for the next similar feature. Recurring jobs get playbooks too, with checks the agent must pass and a log of past failures. When a run comes back wrong, I fix the playbook.",
-      },
-      {
-        label: "Context",
-        text: "I clear context between tasks and build each part of a feature with its own agent, compacting only when a task outgrows the window. A CLI output proxy, terse response modes and codebase knowledge graphs keep token use down.",
-      },
-      {
-        label: "Review",
-        text: "Code review goes to fresh subagents. The agent that wrote the code doesn't review it.",
-      },
-      {
-        label: "Rules and lint",
-        text: "I wrote a 22-rule engineering rulebook and add to it when review finds a new kind of bug. Eight rules run as custom ESLint checks with test fixtures, and a Stop hook won't let the agent finish while a file it touched fails lint.",
-      },
-      {
-        label: "Docs",
-        text: "Each project's CLAUDE.md stays short: project rules and a table of docs, each with a \"read when\" trigger, so the agent opens only what its task needs. One fact lives in one doc, and docs change in the same commit as the code they cover. I packaged this setup as a skill that reorganizes a project's docs.",
-      },
-    ],
+    sectionLabel: "04 — AI-Assisted Engineering",
+    text: "I use Claude Code daily and read every diff before it ships. Agents work from written plans and short per-project docs, and a fresh agent reviews code the first one wrote. When review finds a new kind of bug, I add a rule: eight run as custom ESLint checks with test fixtures, and a hook stops the agent finishing while a touched file fails lint.",
   },
   profile: {
     nameFirst: "Gordan",
     nameLast: "Aleksandrovski",
-    statusLabel: "Now · IT Ops & Support at Avenga",
-    title: "Full-Stack Engineer · Site Reliability",
-    bio: "I build, fix, and maintain code. At Pabau I built full-stack calendar features, then added bi-weekly SRE on-call shifts and DevOps tasks covering the whole infrastructure. Now I'm in IT operations and support at Avenga, working on a telecom client's systems. I like working in a structured team, but I also run personal projects to stay sharp and experiment with different architectures.",
+    statusLabel: "Skopje · Remote or on-site",
+    title: "DevOps · Full-Stack Engineer",
+    bio: "I run production systems and build the software on them. At Pabau I took SRE on-call shifts and infrastructure work for a platform used by 4,000+ practices, and built full-stack calendar features. As a freelancer I build and run client sites end to end, from the data model to zero-downtime deploys. Now I'm on the IT operations and support team at Avenga, for a telecom client. I like working in a structured team, but I also run personal projects to stay sharp and experiment with different architectures.",
     about:
-      `This site has one job: make it clear that I'm serious. That's it.
-
-It's a portfolio. Static data, most people open it once and never come back. Easy excuse to phone it in, or to go the other way and overengineer it into something nobody asked for. I try to do neither.
+      `It's a portfolio. Static data, most people open it once and never come back. Easy excuse to phone it in, or to go the other way and overengineer it into something nobody asked for. I try to do neither.
 
 If something's going in front of people, it has to be good, not just passable, and ideally enjoyable enough to be worth the extra minutes. That's how I approach most things: keep it simple and don't complicate what doesn't need it, but don't let simple turn into lazy.
 
@@ -107,18 +78,24 @@ The one thing I won't skip is accounting for preferences that aren't mine. Every
     "exp-avenga": {
       role: "Associate IT Operations and Support Engineer",
       description:
-        "Avenga is an international IT services company. I'm on the IT operations and support team for a telecom client, monitoring their systems and responding to alerts.",
+        "Avenga is an international IT services company. Joined the IT operations and support team for a telecom client: L1/L2 monitoring and incident response across a rotating shift schedule that includes nights and weekends. Currently onboarding.",
+    },
+    "exp-freelance": {
+      role: "Freelance Full-Stack Engineer",
+      description:
+        "Build and run sites for clients, solo, from design to deployment: WestPrint (2024), the Medical Faculty platform (2025) and Korrmotive (2026). After leaving Pabau in June 2026 I did this full-time: Korrmotive went live in late June, and by mid-August had a custom admin, video, reader reactions and captcha. I still maintain Korrmotive in production. Details are under Selected Work.",
     },
     "exp-pabau-sre": {
       role: "Junior Site Reliability / Software Engineer",
       sectionLabels: ["On-call and monitoring", "Infrastructure", "Calendar team"],
       description:
-        "Took bi-weekly SRE on-call shifts via PagerDuty and DevOps tasks covering the whole infrastructure. Used New Relic to diagnose slow queries and CPU/memory spikes, and flagged a compromised SendGrid account from a traced request spike.\n\nMonitored and recreated Kubernetes pods in Rancher on DigitalOcean for prod, staging and QA, and rotated secrets and JWTs monthly from Jenkins. Restarted Docker containers, truncated container and server logs, and updated an image for the move to Bun. Provisioned jobs, alerts and servers with Terraform, brought up two servers in TypeScript Pulumi for Rancher 2, and registered self-hosted Bitbucket runners on Hetzner with SOPS-encrypted secrets. Stored clinic data backups and CDN images in AWS S3.\n\nOn the calendar team, shipped a full-stack \"show deactivated staff\" toggle: a NestJS resolver and lazy GraphQL query for their past shifts and appointments.",
+        "Alternated weeks between SRE on-call via PagerDuty and full-stack work, on a platform used by 4,000+ practices; on-call shifts averaged about three alerts an hour. After an account-takeover attack went unnoticed, wrote a New Relic alert for abnormal reminder volume. When a second compromised account began draining the company's SendGrid credits, the alert paged me on call; I traced the spike to a single user in the logs and escalated, and access was cut within minutes. Also wrote alerts for connection pool exhaustion, disk usage and slow queries, and tuned the Postgres CPU/RAM alert to stop firing during normal peak load.\n\nIn Terraform, added a retry job for the daily client database backups and gave the Docker image-tag cleanup job a dry-run mode and a keep-list, adapting existing modules, with senior review before merge. Monitored and recreated Kubernetes pods in Rancher on DigitalOcean for prod, staging and QA, and rotated secrets and JWTs monthly from Jenkins. Registered self-hosted Bitbucket runners on Hetzner with SOPS-encrypted secrets, and updated a Docker image for the move to Bun. Stored clinic data backups and CDN images in AWS S3.\n\nOn the calendar team, shipped a full-stack \"show deactivated staff\" toggle: a NestJS resolver and lazy GraphQL query for their past shifts and appointments.",
     },
     "exp-pabau-junior": {
       role: "Junior Software Engineer",
+      sectionLabels: ["Confirmed-icon fix", "Invoices table", "Shared components"],
       description:
-        "Full-stack development on the calendar team. Picked up bugs and features from other teams too.",
+        "Given a ticket for a \"Confirmed\" icon on calendar appointment blocks, I traced the data from the icon back to the email-confirmation handler before shipping. That flow never set the status the spec relied on, so the icon would never have shown for patients confirming by email. Fixed it in two stages: a shared frontend helper with unit tests that reads either signal, then a backend change and a per-clinic backfill so the status is set consistently.\n\nBuilt the client invoices table with the UI/UX designer. The columns didn't fit the design, and the first proposal was to move some of them into a details modal. I proposed icons with tooltips instead (initial avatars, note and location icons, a truncated item list), which kept every field visible at a glance. Then built filters for the table.\n\nBuilt a reusable three-dot options menu shared by the invoices and payments tables and their edit modals, with LaunchDarkly flags deciding which options show; a shared time picker that shows the duration between start and end; and a NestJS controller that posts feature-usage events to Slack through the internal backend service. Also picked up bugs and features from other teams.",
     },
     "exp-pabau-intern": {
       role: "Software Engineer (Internship)",
@@ -134,7 +111,7 @@ The one thing I won't skip is accounting for preferences that aren't mine. Every
   projectEntries: {
     "proj-korrmotive": {
       summary:
-        "Macedonian automotive news and reviews platform, built solo from design through deployment. The journalist's site was running on Wix. Rebuilt the whole thing on a custom stack. He logs into the admin panel and publishes directly from there.",
+        "Automotive news and reviews site for a Macedonian journalist, built solo from design to deployment. Migrated 229 articles and 1,991 images from Wix in one scripted import; he has published about 10 posts a month from the new admin panel since. Deploys are zero-downtime through GitHub Actions, with weekly backups. Lighthouse: 95+ performance on mobile, 100 for accessibility and SEO.",
       technicalSections: {
         "Data migration":
           "Parsed the Wix CSV export, pulled every image from their CDN, re-uploaded to Payload CMS, and rebuilt the full Lexical AST from scratch. Custom Lexical editor blocks for carousel and collage media.",
@@ -146,14 +123,28 @@ The one thing I won't skip is accounting for preferences that aren't mine. Every
           "Deployments under a dedicated unprivileged user. PM2 with 14-day log rotation, ~1.2GB at runtime with 1.6GB headroom on the 4GB VM. Weekly backups. GitHub Actions pipeline: SSH tunnel for DB migrations, rsync, symlink flip for zero-downtime deploys. Self-hosted Umami for cookieless analytics.",
       },
     },
+    "proj-levelspoon": {
+      summary:
+        "Meal-logging app I built for myself and run on my own Debian server. Many products sold in North Macedonia return nothing from a barcode lookup, so a Python OCR service reads the nutrition label from a photo instead. My first Python project. Self-hosted in Docker and reached over Tailscale, with nothing exposed to the public internet.",
+      technicalSections: {
+        "OCR and data":
+          "Label photos go to a FastAPI + PaddleOCR service. Barcodes are looked up in the app's own database first, then Open Food Facts; 246 standard foods are seeded for loose food. Each product stores nutrition per 100 g, and totals are computed from the amount eaten. Products are shared between users, and a user can correct a figure for their own account without changing anyone else's.",
+        "Optional AI":
+          "Runs on the user's own Gemini API key (Gemini Flash). It estimates grams eaten from a photo and gives a rough itemised estimate for a described meal. Estimates are private and marked as estimates. Label figures never come from an LLM.",
+        "Self-hosting":
+          "Each service is its own Docker container with --restart unless-stopped, published on 127.0.0.1 only. The repo is cloned as a non-root user through a read-only deploy key scoped to that repo. Secrets live outside the repo in a 700 directory with 600 files. Migrations run in a throwaway Node container because the server has no Node.",
+        "Tests":
+          "Vitest against Postgres, Playwright end-to-end with mocked providers, and Python unit tests for the OCR service. Linted with ESLint and Ruff.",
+      },
+    },
     "proj-medicinski": {
       summary:
-        "Web platform for the Medical Faculty at Ss. Cyril and Methodius University in Skopje. Students browse all departments, study programs, subjects, and course materials. Professors manage their own content through an admin panel. The server is owned and maintained by FINKI (Факултет за информатички науки и компјутерско инженерство), the Faculty of Computer Science and Engineering, not by me.",
+        "Platform for the Medical Faculty at Ss. Cyril and Methodius University in Skopje, where students browse departments, study programs, subjects and course materials. 37 departments, 364 subjects and 66 department editor accounts, each locked to its own department's records. API routes are rate limited, and search runs behind a cache that shares in-flight requests. Hosted on servers run by FINKI, the university's computer science faculty, so uptime is in their hands.",
       technicalSections: {
         "Content model":
           "Four levels deep: Katedra → Fakultet → Predmet → Kategorija. Relations are bidirectional: subjects know their programs, categories know their subjects. Content stored as Strapi rich-text blocks; each subject branches into category pages for materials, exam questions, and grading info.",
         "Access control":
-          "Strapi RBAC per department. Each department has its own CMS account, locked to its own records only. A Pediatrics professor cannot see or edit Anatomy's subjects or categories.",
+          "Strapi RBAC per department. Each department has its own CMS account, locked to its own records only. A Pediatrics editor cannot see or edit Anatomy's subjects or categories.",
         Performance:
           "Search debounced at 250ms, hitting a Next.js API route with a 15s TTL / 200-entry LRU cache and in-flight deduplication. Two concurrent requests for the same term share one upstream fetch to Strapi instead of spawning two. IntersectionObserver pagination with a user-interaction guard: the sentinel fires from mount but no-ops until the user scrolls. ISR with five-minute revalidation.",
         Security:
@@ -162,7 +153,7 @@ The one thing I won't skip is accounting for preferences that aren't mine. Every
     },
     "proj-westprint": {
       summary:
-        "Catalog and inquiry platform for WestPrint, a Macedonian printing company since 1988. The site covers two sides: equipment (printers, cutters, laminators, vinyl, software) and print production services (business cards, stickers, vehicle wraps, signage, and more). Visitors browse the catalog, and clicking any product or service opens a pre-filled inquiry email straight to the team's inbox. Runs in Macedonian, English, and Albanian. The WestPrint team manages the full catalog through the admin panel.",
+        "Catalog and inquiry site for WestPrint, a Macedonian printing company since 1988. 29 products and 55 services in three languages (Macedonian, English, Albanian), managed by their team through the admin panel. Each product or service opens a pre-filled inquiry email to the team; the site brings them 50+ inquiries a month.",
       technicalSections: {
         Architecture:
           "Next.js 16 and Payload CMS 3 in one codebase. Admin panel at /admin, inside the same Next.js process. Three locales (mk, en, sq) with URL-based routing. Dynamic dictionary imports per locale, falls back to English. Payload local API enforces overrideAccess: false on all server routes; Admin and Editor JWT roles.",
@@ -189,6 +180,10 @@ The one thing I won't skip is accounting for preferences that aren't mine. Every
     linkedin: {
       label: "LinkedIn",
       tooltip: "Opens my LinkedIn profile in a new tab.",
+    },
+    cv: {
+      label: "CV",
+      tooltip: "Opens my CV as a PDF in a new tab.",
     },
   },
   educationEntries: {

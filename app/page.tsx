@@ -13,7 +13,7 @@ const personSchema = {
   '@type': 'Person',
   name: 'Gordan Aleksandrovski',
   url: BASE_URL,
-  jobTitle: 'Full-Stack Engineer · Site Reliability',
+  jobTitle: 'DevOps · Full-Stack Engineer',
   email: 'gordanaleksandrovski20@gmail.com',
   sameAs: [
     'https://github.com/gokjialeksandrovski',
@@ -43,8 +43,8 @@ const Home = () => (
       <Hero />
       <Experience />
       <Projects />
-      <AiEngineering />
       <Education />
+      <AiEngineering />
       <Contact />
     </main>
   </>

@@ -48,7 +48,7 @@ export const ProjectRow = ({ project }: { project: Project }) => {
         </h3>
 
         <p className="mt-2 text-base text-(--text-secondary) leading-relaxed max-w-130">
-          {project.summary ?? project.description}
+          {project.summary}
         </p>
 
         <div className="mt-3 flex flex-wrap gap-2">
@@ -59,32 +59,24 @@ export const ProjectRow = ({ project }: { project: Project }) => {
 
         <LiveLink url={project.url} label={dict.projects.live} newTabLabel={dict.a11y.newTab} />
 
-        {project.summary && (
-          <Collapsible
-            id={collapsibleId}
-            label={dict.projects.technicalToggle}
-            buttonColorClass="text-(--text-muted)"
-          >
-            {project.technicalSections ? (
-              <div className="mt-3 space-y-5 max-w-130">
-                {project.technicalSections.map(({ label, content }) => (
-                  <div key={label}>
-                    <p className="font-display text-[10px] tracking-[0.18em] uppercase text-(--text-muted) mb-1.5">
-                      {label}
-                    </p>
-                    <p className="text-base text-(--text-secondary) leading-relaxed">
-                      {content}
-                    </p>
-                  </div>
-                ))}
+        <Collapsible
+          id={collapsibleId}
+          label={dict.projects.technicalToggle}
+          buttonColorClass="text-(--text-muted)"
+        >
+          <div className="mt-3 space-y-5 max-w-130">
+            {project.technicalSections.map(({ label, content }) => (
+              <div key={label}>
+                <p className="font-display text-[10px] tracking-[0.18em] uppercase text-(--text-muted) mb-1.5">
+                  {label}
+                </p>
+                <p className="text-base text-(--text-secondary) leading-relaxed">
+                  {content}
+                </p>
               </div>
-            ) : (
-              <p className="mt-3 text-base text-(--text-secondary) leading-relaxed max-w-130">
-                {project.description}
-              </p>
-            )}
-          </Collapsible>
-        )}
+            ))}
+          </div>
+        </Collapsible>
       </div>
     </div>
   )

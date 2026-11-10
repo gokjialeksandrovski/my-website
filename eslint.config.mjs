@@ -86,6 +86,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored copy of the canonical rules: re-copied, never edited here.
+    "clean-code-rules.mjs",
   ]),
 ]);
 

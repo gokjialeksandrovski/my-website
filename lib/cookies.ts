@@ -3,7 +3,9 @@ export const COOKIE_KEYS = {
   lang: 'lang',
 } as const
 
-const ONE_YEAR_SECONDS = 60 * 60 * 24 * 365
+const SECONDS_PER_DAY = 86_400
+const DAYS_PER_YEAR = 365
+const ONE_YEAR_SECONDS = SECONDS_PER_DAY * DAYS_PER_YEAR
 
 export const writeCookie = (name: string, value: string) => {
   document.cookie = `${name}=${value}; path=/; max-age=${ONE_YEAR_SECONDS}; samesite=lax`

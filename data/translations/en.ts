@@ -62,7 +62,7 @@ export const en: Dictionary = {
     nameFirst: "Gordan",
     nameLast: "Aleksandrovski",
     statusLabel: "Skopje · Remote or on-site",
-    title: "DevOps · Full-Stack Engineer",
+    title: "Infrastructure · Full-Stack Engineer",
     bio: "I run production systems and build the software on them. At Pabau I took SRE on-call shifts and DevOps work for a SaaS used by 4,000+ clinics, and built full-stack calendar features. As a freelancer I build and run client sites end to end, from the data model to zero-downtime deploys. Now I'm on the IT operations and support team at Avenga, for a telecommunications company. I like working in a structured team, but I also run personal projects to stay sharp and experiment with different architectures and technologies.",
     about:
       `It's a portfolio. Static data, most people open it once and never come back. Easy excuse to phone it in, or to go the other way and overengineer it into something nobody asked for. I try to do neither.

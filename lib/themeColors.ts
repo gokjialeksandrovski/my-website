@@ -1,6 +1,7 @@
 // Hex mirrors of the OKLCH tokens in app/globals.css, for surfaces CSS
 // variables can't reach: the theme-color meta tag and the Satori-rendered OG
-// image. Change both files together.
+// image. Change both files together. app/icon.svg is static and repeats night,
+// nightInk and signalAmber by hand: change it too, and re-export apple-icon.png.
 export const THEME_HEX = {
   paper: '#f8f5ef',
   night: '#070603',

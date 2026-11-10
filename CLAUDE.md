@@ -40,5 +40,5 @@ Windows 11, pnpm. Free-tier hosting: no new dependency without asking.
 - New content and facts go in `data/`, not hard-coded in components.
 - Every copy change lands in both `data/translations/en.ts` and `mk.ts`, same voice.
 - After editing `data/experience.ts` or its translations, run `../cv/check-facts.mjs` (command in `docs/ARCHITECTURE.md`). It must pass.
-- Changing a token in `app/globals.css` means updating its hex mirror in `lib/themeColors.ts`: the OG image and `themeColor` read only the mirror.
+- Changing a token in `app/globals.css` means updating its hex mirror in `lib/themeColors.ts`: the OG image and `themeColor` read only the mirror. `app/icon.svg` hard-codes three of those hex values; keep it and `app/apple-icon.png` in step.
 - `clean-code-rules.mjs` is a vendored copy of the canonical rules. Re-copy it, don't edit it here.

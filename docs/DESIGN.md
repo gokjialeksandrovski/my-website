@@ -224,6 +224,9 @@ Full-width ruled rows, 20px vertical padding: a Caption label in a fixed 80px sl
 ### Section Label
 Every section opens with a Label-size, Ink Muted uppercase `<h2>` followed by a 1px Rule that runs to the column edge, 40px above the first row.
 
+### Favicon
+A condensed, straight-sided G in Night Ink on a square Night tile, its crossbar in Signal Amber: the bar is the status light. The tile is Night in both colour schemes, matching the Open Graph image. Drawn on a 32-unit grid with a 4-unit stroke and every edge on an even coordinate, so the 16px tab icon lands on whole pixels. `app/apple-icon.png` is the same mark at 180px.
+
 ### Signature: Hero Entrance
 Status line, name, divider and meta block fade up 14px in sequence (0, 80, 180, 260ms delays) over 700ms on `cubic-bezier(0.22, 1, 0.36, 1)`. Under `prefers-reduced-motion` it is disabled and smooth scrolling is turned off.
 
@@ -235,7 +238,7 @@ Status line, name, divider and meta block fade up 14px in sequence (0, 80, 180, 
 - **Do** keep Signal Amber for state: live, current, active, hover, focus.
 - **Do** pair every new token with its `.dark` value and check both themes and both languages (Latin and Cyrillic) before shipping.
 - **Do** honour `prefers-reduced-motion` for every animation, and keep motion under 400ms except the one-time hero entrance.
-- **Do** read colours that live outside CSS (viewport `themeColor`, the Open Graph image) from `lib/themeColors.ts`, and update its hex mirrors whenever a token in `app/globals.css` changes.
+- **Do** read colours that live outside CSS (viewport `themeColor`, the Open Graph image) from `lib/themeColors.ts`, and update its hex mirrors whenever a token in `app/globals.css` changes. `app/icon.svg` is static, so it repeats three of those hex values by hand: change it, and re-export `app/apple-icon.png`, in the same edit.
 
 ### Don't:
 - **Don't** add anything that doesn't carry information. If removing it loses no fact and no affordance, remove it.

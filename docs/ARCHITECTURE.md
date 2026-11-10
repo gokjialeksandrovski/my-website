@@ -18,7 +18,7 @@ Stack, file layout, routes, runtime behaviour, deployment and local commands for
 
 ```
 public/         the CV PDF linked from Contact, exported from ../cv/cv.html
-app/            routes: layout, page, not-found, opengraph-image, robots, sitemap, icon.svg, globals.css
+app/            routes: layout, page, not-found, opengraph-image, robots, sitemap, icon.svg, apple-icon.png, globals.css
 components/     Nav, toggles, Collapsible, PageSection, SectionLabel, StackTag, HeroShell
   sections/     Hero, Experience, Projects (+ ProjectRow), AiEngineering, Education, Contact (+ ContactRow)
 context/        LanguageContext, ThemeContext (client providers)
@@ -38,6 +38,7 @@ docs/           this file, PRODUCT.md, DESIGN.md
 | `/robots.txt` | `app/robots.ts` | Allow all, points to sitemap |
 | `/sitemap.xml` | `app/sitemap.ts` | One entry, the home page |
 | `/icon.svg` | `app/icon.svg` | Favicon |
+| `/apple-icon.png` | `app/apple-icon.png` | iOS home-screen icon: a 180px render of `icon.svg`. Re-export it when the SVG changes |
 
 ## Theme and language
 

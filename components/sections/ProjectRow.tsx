@@ -6,26 +6,37 @@ import { StackTag } from '@/components/StackTag'
 import { Collapsible } from '@/components/Collapsible'
 import { useLanguage } from '@/context/LanguageContext'
 
-interface LiveLinkProps {
-  url?: string
+interface ExternalLinkProps {
+  url: string
   label: string
   newTabLabel: string
 }
 
-const LiveLink = ({ url, label, newTabLabel }: LiveLinkProps) => {
-  if (!url) return null
+const ExternalLink = ({ url, label, newTabLabel }: ExternalLinkProps) => (
+  <Link
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="relative before:absolute before:inset-x-0 before:-inset-y-1.5 font-display text-[11px] tracking-[0.12em] uppercase text-(--text-secondary) hover:text-(--accent-text) transition-colors duration-200 border-b border-current pb-px"
+  >
+    {label}
+    <span className="sr-only"> ({newTabLabel})</span>
+  </Link>
+)
+
+const ProjectLinks = ({ project }: { project: Project }) => {
+  const { dict } = useLanguage()
+  const links = [
+    { url: project.url, label: dict.projects.live },
+    { url: project.repoUrl, label: dict.projects.source },
+  ].filter((link): link is { url: string; label: string } => Boolean(link.url))
+  if (links.length === 0) return null
 
   return (
-    <div className="mt-4">
-      <Link
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative before:absolute before:inset-x-0 before:-inset-y-1.5 font-display text-[11px] tracking-[0.12em] uppercase text-(--text-secondary) hover:text-(--accent-text) transition-colors duration-200 border-b border-current pb-px"
-      >
-        {label}
-        <span className="sr-only"> ({newTabLabel})</span>
-      </Link>
+    <div className="mt-4 flex gap-6">
+      {links.map(({ url, label }) => (
+        <ExternalLink key={url} url={url} label={label} newTabLabel={dict.a11y.newTab} />
+      ))}
     </div>
   )
 }
@@ -57,7 +68,7 @@ export const ProjectRow = ({ project }: { project: Project }) => {
           ))}
         </div>
 
-        <LiveLink url={project.url} label={dict.projects.live} newTabLabel={dict.a11y.newTab} />
+        <ProjectLinks project={project} />
 
         <Collapsible
           id={collapsibleId}

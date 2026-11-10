@@ -41,6 +41,7 @@ export const en: Dictionary = {
     sectionLabel: "02 — Selected Work",
     technicalToggle: "How it's built",
     live: "Live →",
+    source: "Source →",
   },
   contact: {
     sectionLabel: "05 — Contact",
@@ -62,7 +63,7 @@ export const en: Dictionary = {
     nameLast: "Aleksandrovski",
     statusLabel: "Skopje · Remote or on-site",
     title: "DevOps · Full-Stack Engineer",
-    bio: "I run production systems and build the software on them. At Pabau I took SRE on-call shifts and infrastructure work for a platform used by 4,000+ practices, and built full-stack calendar features. As a freelancer I build and run client sites end to end, from the data model to zero-downtime deploys. Now I'm on the IT operations and support team at Avenga, for a telecom client. I like working in a structured team, but I also run personal projects to stay sharp and experiment with different architectures.",
+    bio: "I run production systems and build the software on them. At Pabau I took SRE on-call shifts and DevOps work for a SaaS used by 4,000+ clinics, and built full-stack calendar features. As a freelancer I build and run client sites end to end, from the data model to zero-downtime deploys. Now I'm on the IT operations and support team at Avenga, for a telecommunications company. I like working in a structured team, but I also run personal projects to stay sharp and experiment with different architectures and technologies.",
     about:
       `It's a portfolio. Static data, most people open it once and never come back. Easy excuse to phone it in, or to go the other way and overengineer it into something nobody asked for. I try to do neither.
 
@@ -78,18 +79,18 @@ The one thing I won't skip is accounting for preferences that aren't mine. Every
     "exp-avenga": {
       role: "Associate IT Operations and Support Engineer",
       description:
-        "Avenga is an international IT services company. Joined the IT operations and support team for a telecom client: L1/L2 monitoring and incident response across a rotating shift schedule that includes nights and weekends. Currently onboarding.",
+        "Avenga is a global engineering and consulting company that builds software, AI products and digital platforms for enterprises. Joined the IT operations and support team for a telecommunications company: L1/L2 monitoring and incident response across a rotating shift schedule that includes nights and weekends. Currently onboarding.",
     },
     "exp-freelance": {
       role: "Freelance Full-Stack Engineer",
       description:
-        "Build and run sites for clients, solo, from design to deployment: WestPrint (2024), the Medical Faculty platform (2025) and Korrmotive (2026). After leaving Pabau in June 2026 I did this full-time: Korrmotive went live in late June, and by mid-August had a custom admin, video, reader reactions and captcha. I still maintain Korrmotive in production. Details are under Selected Work.",
+        "Build and run sites for clients, solo, from design to deployment: WestPrint (2024), the Medical Faculty platform (2025) and Korrmotive (2026). After leaving Pabau in June 2026 I did this full-time: Korrmotive went live in late June, and by mid-August had a custom admin, video, reader reactions and captcha. I still maintain all three in production. Details are under Selected Work.",
     },
     "exp-pabau-sre": {
       role: "Junior Site Reliability / Software Engineer",
       sectionLabels: ["On-call and monitoring", "Infrastructure", "Calendar team"],
       description:
-        "Alternated weeks between SRE on-call via PagerDuty and full-stack work, on a platform used by 4,000+ practices; on-call shifts averaged about three alerts an hour. After an account-takeover attack went unnoticed, wrote a New Relic alert for abnormal reminder volume. When a second compromised account began draining the company's SendGrid credits, the alert paged me on call; I traced the spike to a single user in the logs and escalated, and access was cut within minutes. Also wrote alerts for connection pool exhaustion, disk usage and slow queries, and tuned the Postgres CPU/RAM alert to stop firing during normal peak load.\n\nIn Terraform, added a retry job for the daily client database backups and gave the Docker image-tag cleanup job a dry-run mode and a keep-list, adapting existing modules, with senior review before merge. Monitored and recreated Kubernetes pods in Rancher on DigitalOcean for prod, staging and QA, and rotated secrets and JWTs monthly from Jenkins. Registered self-hosted Bitbucket runners on Hetzner with SOPS-encrypted secrets, and updated a Docker image for the move to Bun. Stored clinic data backups and CDN images in AWS S3.\n\nOn the calendar team, shipped a full-stack \"show deactivated staff\" toggle: a NestJS resolver and lazy GraphQL query for their past shifts and appointments.",
+        "Alternated weeks between SRE on-call via PagerDuty and full-stack work, on a SaaS used by 4,000+ clinics; on-call shifts averaged about three alerts an hour. After an account-takeover attack went unnoticed, wrote a New Relic alert for abnormal reminder volume. When a second compromised account began draining the company's SendGrid credits, the alert paged me on call; I traced the spike to a single user in the logs and escalated, and access was cut within minutes. Also wrote alerts for connection pool exhaustion, disk usage and slow queries, and tuned the Postgres CPU/RAM alert to stop firing during normal peak load.\n\nIn Terraform, added a retry job for the daily client database backups and gave the Docker image-tag cleanup job a dry-run mode and a keep-list, adapting existing modules, with senior review before merge. Monitored and recreated Kubernetes pods in Rancher on DigitalOcean for prod, staging and QA, and rotated secrets and JWTs monthly from Jenkins. Registered self-hosted Bitbucket runners on Hetzner with SOPS-encrypted secrets, and updated a Docker image for the move to Bun. Stored clinic data backups and CDN images in AWS S3.\n\nOn the calendar team, shipped a full-stack \"show deactivated staff\" toggle: a NestJS resolver and lazy GraphQL query for their past shifts and appointments.",
     },
     "exp-pabau-junior": {
       role: "Junior Software Engineer",

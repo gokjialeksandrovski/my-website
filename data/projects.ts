@@ -12,6 +12,7 @@ export interface Project {
   readonly technicalSections: readonly TechnicalSection[]
   readonly stack: readonly Skill[]
   readonly url?: string
+  readonly repoUrl?: string
   readonly year: string
 }
 
@@ -97,6 +98,7 @@ export const projects: readonly Project[] = [
       "Tailscale",
       "Linux",
     ],
+    repoUrl: "https://github.com/gokjialeksandrovski/levelspoon",
     year: "2026",
   },
   {

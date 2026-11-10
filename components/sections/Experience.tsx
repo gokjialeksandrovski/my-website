@@ -44,7 +44,7 @@ const ExperienceRow = ({ entry, periodLabel, currentPositionLabel }: ExperienceR
       <span className="font-display text-[11px] tracking-widest uppercase text-(--text-muted) leading-snug">
         {periodLabel}
       </span>
-      {isOngoing(entry.period) && (
+      {isOngoing(entry.period) && !entry.isFreelance && (
         <span
           role="img"
           className="shrink-0 w-1.25 h-1.25 rounded-full bg-(--accent)"

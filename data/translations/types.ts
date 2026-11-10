@@ -63,6 +63,7 @@ export interface Dictionary {
     readonly sectionLabel: string
     readonly technicalToggle: string
     readonly live: string
+    readonly source: string
   }
   readonly contact: {
     readonly sectionLabel: string

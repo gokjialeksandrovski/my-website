@@ -7,6 +7,7 @@ export interface ExperienceEntry {
   readonly company: string
   readonly period: Period
   readonly isAchievement?: boolean
+  readonly isFreelance?: boolean
   readonly description: string
   readonly stack: readonly Skill[]
 }
@@ -18,16 +19,17 @@ export const experience: readonly ExperienceEntry[] = [
     company: "Avenga",
     period: { start: "2026-10", end: "present" },
     description:
-      "Avenga is an international IT services company. Joined the IT operations and support team for a telecom client: L1/L2 monitoring and incident response across a rotating shift schedule that includes nights and weekends. Currently onboarding.",
+      "Avenga is a global engineering and consulting company that builds software, AI products and digital platforms for enterprises. Joined the IT operations and support team for a telecommunications company: L1/L2 monitoring and incident response across a rotating shift schedule that includes nights and weekends. Currently onboarding.",
     stack: ["Jira", "Confluence"],
   },
   {
     id: "exp-freelance",
     role: "Freelance Full-Stack Engineer",
     company: "WestPrint, Medical Faculty, Korrmotive",
-    period: { start: "2024-10", end: "2026-10" },
+    isFreelance: true,
+    period: { start: "2024-10", end: "present" },
     description:
-      "Build and run sites for clients, solo, from design to deployment: WestPrint (2024), the Medical Faculty platform (2025) and Korrmotive (2026). After leaving Pabau in June 2026 I did this full-time: Korrmotive went live in late June, and by mid-August had a custom admin, video, reader reactions and captcha. I still maintain Korrmotive in production. Details are under Selected Work.",
+      "Build and run sites for clients, solo, from design to deployment: WestPrint (2024), the Medical Faculty platform (2025) and Korrmotive (2026). After leaving Pabau in June 2026 I did this full-time: Korrmotive went live in late June, and by mid-August had a custom admin, video, reader reactions and captcha. I still maintain all three in production. Details are under Selected Work.",
     stack: [
       "Next.js",
       "TypeScript",
@@ -45,7 +47,7 @@ export const experience: readonly ExperienceEntry[] = [
     company: "Pabau Clinic Software",
     period: { start: "2025-09", end: "2026-06" },
     description:
-      "Alternated weeks between SRE on-call via PagerDuty and full-stack work, on a platform used by 4,000+ practices; on-call shifts averaged about three alerts an hour. After an account-takeover attack went unnoticed, wrote a New Relic alert for abnormal reminder volume. When a second compromised account began draining the company's SendGrid credits, the alert paged me on call; I traced the spike to a single user in the logs and escalated, and access was cut within minutes. Also wrote alerts for connection pool exhaustion, disk usage and slow queries, and tuned the Postgres CPU/RAM alert to stop firing during normal peak load.\n\nIn Terraform, added a retry job for the daily client database backups and gave the Docker image-tag cleanup job a dry-run mode and a keep-list, adapting existing modules, with senior review before merge. Monitored and recreated Kubernetes pods in Rancher on DigitalOcean for prod, staging and QA, and rotated secrets and JWTs monthly from Jenkins. Registered self-hosted Bitbucket runners on Hetzner with SOPS-encrypted secrets, and updated a Docker image for the move to Bun. Stored clinic data backups and CDN images in AWS S3.\n\nOn the calendar team, shipped a full-stack \"show deactivated staff\" toggle: a NestJS resolver and lazy GraphQL query for their past shifts and appointments.",
+      "Alternated weeks between SRE on-call via PagerDuty and full-stack work, on a SaaS used by 4,000+ clinics; on-call shifts averaged about three alerts an hour. After an account-takeover attack went unnoticed, wrote a New Relic alert for abnormal reminder volume. When a second compromised account began draining the company's SendGrid credits, the alert paged me on call; I traced the spike to a single user in the logs and escalated, and access was cut within minutes. Also wrote alerts for connection pool exhaustion, disk usage and slow queries, and tuned the Postgres CPU/RAM alert to stop firing during normal peak load.\n\nIn Terraform, added a retry job for the daily client database backups and gave the Docker image-tag cleanup job a dry-run mode and a keep-list, adapting existing modules, with senior review before merge. Monitored and recreated Kubernetes pods in Rancher on DigitalOcean for prod, staging and QA, and rotated secrets and JWTs monthly from Jenkins. Registered self-hosted Bitbucket runners on Hetzner with SOPS-encrypted secrets, and updated a Docker image for the move to Bun. Stored clinic data backups and CDN images in AWS S3.\n\nOn the calendar team, shipped a full-stack \"show deactivated staff\" toggle: a NestJS resolver and lazy GraphQL query for their past shifts and appointments.",
     stack: [
       "PagerDuty",
       "New Relic",

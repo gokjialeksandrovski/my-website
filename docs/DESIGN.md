@@ -135,7 +135,7 @@ Nothing extra. Every element on the page carries information or helps the reader
 Warm-paper neutrals on a single hue (85°), with one saturated amber that behaves like a status light. All values are OKLCH and live as CSS custom properties in `app/globals.css`; light tokens sit on `:root`, the night set on `.dark`.
 
 ### Primary
-- **Signal Amber** (`--accent`): the only saturated colour, identical in both themes. Marks the "available" status dot and label, the current-position dot in Experience, the active nav link, every hover target, the `+`/`−` disclosure glyph, the 1px scroll-progress bar under the nav, and the focus ring.
+- **Signal Amber** (`--accent`): the only saturated colour, identical in both themes. Marks the "available" status dot and label, the current-position dot in Experience (ongoing employment only; freelance work stays unmarked, so the section keeps one amber dot), the active nav link, every hover target, the `+`/`−` disclosure glyph, the 1px scroll-progress bar under the nav, and the focus ring.
 - **Signal Amber Text** (`--accent-text`): the same signal set as text or as a line on paper. Bright amber is 2.3:1 on Paper, so light theme uses a darker amber (5.1:1) for amber words, the `+`/`−` glyph, hover colour and the focus ring. In the night theme it equals Signal Amber. Dots and the progress bar keep the bright amber in both themes.
 
 ### Neutral

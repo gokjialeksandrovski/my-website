@@ -19,7 +19,11 @@ Theme and language live in cookies rather than localStorage. The root layout rea
 
 Both languages are typed against one `Dictionary` interface (`data/translations/types.ts`). If I add an English string and forget the Macedonian one, the build fails.
 
-The expandable sections animate `grid-template-rows` from `0fr` to `1fr`. That avoids measuring heights in JavaScript and needs no animation library.
+The expandable sections animate `grid-template-rows` from `0fr` to `1fr`. That avoids measuring heights in JavaScript and needs no animation library. A closed panel is `inert`, so its text stays out of the tab order and find-in-page.
+
+Every section sits on one grid: period, name, evidence. It is a single `ledger` utility in `app/globals.css`, next to the four text roles the page uses (`type-title`, `type-label`, `type-caption`, `type-body`). At desktop widths the period and name stay pinned while a long entry scrolls past.
+
+The header reads scroll position once per animation frame and writes the progress bar straight to the DOM, so scrolling does not re-render React.
 
 A few colours have to exist outside CSS. The browser's `themeColor` and the generated Open Graph image can't read CSS variables, so `lib/themeColors.ts` keeps hex copies of the tokens in `app/globals.css`.
 

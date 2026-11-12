@@ -97,7 +97,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           <script dangerouslySetInnerHTML={{ __html: SYSTEM_THEME_SCRIPT }} />
         </head>
       )}
-      <body>
+      <body className="min-h-dvh flex flex-col">
         <ThemeProvider initialTheme={theme}>
           <LanguageProvider initialLang={lang}>
             {children}

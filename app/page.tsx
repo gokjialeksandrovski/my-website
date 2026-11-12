@@ -40,7 +40,7 @@ const Home = () => (
       dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
     />
     <Nav />
-    <main id="main-content">
+    <main id="main-content" className="flex-1">
       <Hero />
       <Experience />
       <Projects />

@@ -11,7 +11,7 @@ export const SegmentToggle = ({ segments, activeIndex, label, onToggle }: Segmen
     type="button"
     onClick={onToggle}
     aria-label={label}
-    className="group self-stretch flex items-center gap-1.5 type-label tracking-[0.12em] cursor-pointer"
+    className="group relative before:absolute before:-inset-x-1.5 before:-inset-y-2.5 flex items-center gap-1.5 type-label tracking-[0.12em] cursor-pointer"
   >
     {segments.map((segment, index) => (
       <span key={segment} className="contents">

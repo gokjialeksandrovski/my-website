@@ -96,7 +96,7 @@ const NavLinks = ({ activeSection, labels, hashBase, className }: NavLinksProps)
         href={`${hashBase}#${id}`}
         onClick={(event) => handleHashClick(event, `#${id}`)}
         aria-current={isActive ? 'location' : undefined}
-        className={`self-stretch flex items-center px-2 -mx-2 type-label transition-colors duration-200 ${isActive ? 'text-signal-text' : 'text-ink-muted hover:text-ink'} ${className}`}
+        className={`relative before:absolute before:-inset-x-2 before:-inset-y-2.5 type-label transition-colors duration-200 ${isActive ? 'text-signal-text' : 'text-ink-muted hover:text-ink'} ${className}`}
       >
         {labels[labelKey]}
       </Link>
@@ -125,23 +125,23 @@ export const Nav = () => {
           <Link
             href="/"
             onClick={isHome ? handleTopClick : undefined}
-            className="mr-4 self-stretch flex items-center type-label tracking-[0.12em] text-ink-muted hover:text-ink transition-colors duration-200 whitespace-nowrap"
+            className="mr-4 relative before:absolute before:-inset-x-2 before:-inset-y-2.5 type-label tracking-[0.12em] text-ink-muted hover:text-ink transition-colors duration-200 whitespace-nowrap"
           >
             {/* The Cyrillic name and toggles don't fit one row on the narrowest phones; the hero carries the full name. */}
             {dict.profile.nameFirst}
             <span className="hidden min-[375px]:inline">&nbsp;{dict.profile.nameLast}</span>
           </Link>
 
-          <nav aria-label={dict.nav.primary} className="hidden lg:flex self-stretch items-center gap-8">
+          <nav aria-label={dict.nav.primary} className="hidden lg:flex items-center gap-8">
             <NavLinks activeSection={activeSection} labels={dict.nav} hashBase={hashBase} className="tracking-[0.12em]" />
             <span aria-hidden="true" className="w-px h-3 bg-rule-strong shrink-0" />
-            <div className="flex self-stretch items-center gap-5">
+            <div className="flex items-center gap-5">
               <LanguageToggle />
               <ThemeToggle />
             </div>
           </nav>
 
-          <div className="flex shrink-0 self-stretch items-center gap-4 sm:gap-5 lg:hidden">
+          <div className="flex shrink-0 items-center gap-4 sm:gap-5 lg:hidden">
             <LanguageToggle />
             <ThemeToggle />
           </div>

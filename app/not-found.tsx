@@ -6,7 +6,7 @@ import { NotFoundContent } from './_components/NotFoundContent'
 const NotFound = () => (
   <>
     <Nav />
-    <main id="main-content">
+    <main id="main-content" className="flex-1">
       <HeroShell>
         <NotFoundContent />
       </HeroShell>

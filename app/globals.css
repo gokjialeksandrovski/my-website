@@ -2,12 +2,26 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
+@theme inline {
   --font-display: var(--font-display-raw), sans-serif;
   --font-body: var(--font-body-raw), sans-serif;
+
+  --color-paper: var(--bg);
+  --color-paper-shade: var(--bg-subtle);
+  --color-ink: var(--text);
+  --color-ink-secondary: var(--text-secondary);
+  --color-ink-muted: var(--text-muted);
+  --color-signal: var(--accent);
+  --color-signal-text: var(--accent-text);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 :root {
+  color-scheme: light;
+
   --bg: oklch(97% 0.008 85);
   --bg-subtle: oklch(93% 0.012 85);
   --text: oklch(18% 0.01 85);
@@ -18,9 +32,14 @@
   --accent-text: oklch(52% 0.12 75);
   --rule: oklch(84% 0.010 85);
   --rule-strong: oklch(65% 0.010 85);
+
+  /* Fixed header: a 40px bar plus a 36px link row on phones, one 44px bar from lg. Scroll offsets and sticky cells read it. */
+  --header-height: 4.8125rem;
 }
 
 .dark {
+  color-scheme: dark;
+
   --bg: oklch(12% 0.008 85);
   --bg-subtle: oklch(17% 0.008 85);
   --text: oklch(92% 0.01 85);
@@ -28,20 +47,25 @@
   --text-muted: oklch(60% 0.01 85);
   --accent: oklch(72% 0.16 85);
   --accent-text: var(--accent);
-  --rule: oklch(22% 0.010 85);
+  --rule: oklch(24% 0.010 85);
   --rule-strong: oklch(35% 0.010 85);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+@media (width >= 64rem) {
+  :root {
+    --header-height: 2.8125rem;
+  }
 }
 
 html {
   scroll-behavior: smooth;
+  /* One pixel short, so a section's top hairline lands under the header's own instead of doubling it. */
+  scroll-padding-top: calc(var(--header-height) - 1px);
+  scrollbar-color: var(--rule-strong) var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -49,6 +73,19 @@ body {
   color: var(--text);
   font-family: var(--font-body, "Jost", sans-serif);
   line-height: 1.6;
+  /* Only Jost 400 is loaded; a synthesised bold or italic would be a smeared copy of it. */
+  font-synthesis: none;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: oklch(18% 0.01 85);
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 
 p,
@@ -56,19 +93,113 @@ dd {
   text-wrap: pretty;
 }
 
+:focus-visible {
+  outline: 1.5px solid var(--accent-text);
+  outline-offset: 3px;
+}
+
+/* A section focused by a nav jump is a scroll target, not a control. */
+section:focus {
+  outline: none;
+}
+
+/* Type roles. Oswald names, dates and controls; Jost explains. */
+@utility type-label {
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@utility type-caption {
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@utility type-title {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  @media (width >= 48rem) {
+    font-size: 1rem;
+  }
+}
+
+@utility type-body {
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--text-secondary);
+}
+
+/* The ledger: period, name, evidence. Every section sets its rows on these columns. */
+@utility ledger {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 2rem;
+
+  @media (width >= 48rem) {
+    grid-template-columns: 10rem minmax(0, 1fr);
+  }
+
+  @media (width >= 64rem) {
+    grid-template-columns: 10rem minmax(0, 1fr) minmax(0, 1.4fr);
+  }
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;
     transform: translateY(14px);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(110%);
+  }
+}
+
+@keyframes draw {
+  from {
+    transform: scaleX(0);
   }
 }
 
 .animate-in {
-  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: fade-up 0.7s var(--ease-out-expo) both;
+}
+
+/* Each line of the name rises from behind its own baseline. The padding keeps the mask clear of
+   glyphs that overshoot the tight line box (the Cyrillic Д has feet below the baseline). */
+.reveal-line {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.14em;
+  margin-block: -0.14em;
+}
+
+.reveal-line > span {
+  display: block;
+  animation: rise 0.9s var(--ease-out-expo) both;
+}
+
+.animate-draw {
+  transform-origin: left;
+  animation: draw 0.9s var(--ease-out-expo) both;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.24s;
+  animation-timing-function: ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -76,28 +207,15 @@ dd {
     scroll-behavior: auto;
   }
 
-  .animate-in {
+  .animate-in,
+  .animate-draw,
+  .reveal-line > span {
     animation: none;
-    opacity: 1;
-    transform: none;
   }
-}
 
-:focus-visible {
-  outline: 1.5px solid var(--accent-text);
-  outline-offset: 3px;
-}
-
-.section-label {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  overflow: hidden;
-}
-
-.section-label::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background-color: var(--rule);
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

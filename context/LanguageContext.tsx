@@ -5,6 +5,7 @@ import { en } from '@/data/translations/en'
 import { mk } from '@/data/translations/mk'
 import type { Dictionary } from '@/data/translations/types'
 import { COOKIE_KEYS, writeCookie } from '@/lib/cookies'
+import { withViewTransition } from '@/lib/viewTransition'
 
 type Lang = 'en' | 'mk'
 
@@ -32,7 +33,7 @@ export const LanguageProvider = ({ initialLang, children }: LanguageProviderProp
 
   const setLang = (next: Lang) => {
     writeCookie(COOKIE_KEYS.lang, next)
-    setLangState(next)
+    withViewTransition(() => setLangState(next))
   }
 
   return (

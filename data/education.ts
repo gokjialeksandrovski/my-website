@@ -5,15 +5,15 @@ export interface EducationEntry {
   readonly institution: string
   readonly program: string
   readonly period: Period
-  readonly note?: string
 }
 
-export const education: readonly EducationEntry[] = [
+export const education = [
   {
     id: "edu-01",
     institution: "Brainster",
     program: "Front-End Development Academy",
     period: { start: "2023-09", end: "2024-10" },
-    note: "13 months of JavaScript, TypeScript, React, CSS (a lot of Tailwind), Firebase, semantic HTML, design fundamentals, and Git.",
   },
-]
+] as const satisfies readonly EducationEntry[]
+
+export type EducationId = (typeof education)[number]['id']

@@ -1,31 +1,22 @@
 'use client'
 
 import { experience, type ExperienceEntry } from '@/data/experience'
-import { StackTag } from '@/components/StackTag'
-import { SectionLabel } from '@/components/SectionLabel'
+import type { ExperienceTranslation } from '@/data/translations/types'
+import { StackTags } from '@/components/StackTags'
 import { PageSection } from '@/components/PageSection'
+import { LedgerList, LedgerRow } from '@/components/LedgerRow'
+import { Prose, splitParagraphs } from '@/components/Prose'
 import { useLanguage } from '@/context/LanguageContext'
 import { formatPeriod, isOngoing } from '@/lib/formatPeriod'
 
-type ExperienceView = ExperienceEntry & { readonly sectionLabels?: readonly string[] }
-
-const PARAGRAPH_SEPARATOR = '\n\n'
-const BODY_CLASS = 'text-base text-(--text-secondary) leading-relaxed max-w-130'
-
-const ExperienceDescription = ({ entry }: { entry: ExperienceView }) => {
-  const { sectionLabels, description } = entry
-  if (!sectionLabels) {
-    return <p className={`${BODY_CLASS} whitespace-pre-line`}>{description}</p>
-  }
-  const paragraphs = description.split(PARAGRAPH_SEPARATOR)
+const ExperienceDescription = ({ description, sectionLabels }: ExperienceTranslation) => {
+  if (!sectionLabels) return <Prose text={description} />
   return (
-    <div className="space-y-5">
-      {paragraphs.map((paragraph, index) => (
+    <div className="space-y-6">
+      {splitParagraphs(description).map((paragraph, index) => (
         <div key={sectionLabels[index] ?? paragraph}>
-          <p className="font-display text-[10px] tracking-[0.18em] uppercase text-(--text-muted) mb-1.5">
-            {sectionLabels[index]}
-          </p>
-          <p className={BODY_CLASS}>{paragraph}</p>
+          <h4 className="type-caption text-ink-muted mb-1.5">{sectionLabels[index]}</h4>
+          <p className="type-body">{paragraph}</p>
         </div>
       ))}
     </div>
@@ -33,74 +24,59 @@ const ExperienceDescription = ({ entry }: { entry: ExperienceView }) => {
 }
 
 interface ExperienceRowProps {
-  entry: ExperienceView
+  entry: ExperienceEntry
+  translation: ExperienceTranslation
   periodLabel: string
   currentPositionLabel: string
 }
 
-const ExperienceRow = ({ entry, periodLabel, currentPositionLabel }: ExperienceRowProps) => (
-  <div className="py-8 last:pb-0 grid grid-cols-1 md:grid-cols-[160px_1fr_1.4fr] md:items-baseline gap-y-3 gap-x-8">
-    <div className="flex items-center gap-2">
-      <span className="font-display text-[11px] tracking-widest uppercase text-(--text-muted) leading-snug">
+const ExperienceRow = ({ entry, translation, periodLabel, currentPositionLabel }: ExperienceRowProps) => (
+  <LedgerRow
+    aside={
+      <p className="flex items-center gap-2 type-label tracking-widest tabular-nums text-ink-muted">
         {periodLabel}
-      </span>
-      {isOngoing(entry.period) && !entry.isFreelance && (
-        <span
-          role="img"
-          className="shrink-0 w-1.25 h-1.25 rounded-full bg-(--accent)"
-          aria-label={currentPositionLabel}
-        />
-      )}
-    </div>
-
-    <div>
-      <h3 className="font-display text-[13px] tracking-[0.04em] uppercase font-semibold text-(--text) leading-snug">
-        {entry.role}
-      </h3>
-      <p className="mt-1 font-display text-[10px] tracking-[0.12em] uppercase text-(--text-muted)">
-        {entry.company}
+        {isOngoing(entry.period) && !entry.isFreelance && (
+          <span role="img" className="shrink-0 size-1.25 rounded-full bg-signal" aria-label={currentPositionLabel} />
+        )}
       </p>
+    }
+    head={
+      <>
+        <h3 className="type-title text-ink">{translation.role}</h3>
+        <p className="mt-1.5 type-label tracking-[0.12em] text-ink-secondary">{entry.company}</p>
+      </>
+    }
+  >
+    <div className="max-w-130">
+      <ExperienceDescription {...translation} />
     </div>
-
-    <div>
-      <ExperienceDescription entry={entry} />
-      <div className="mt-3 flex flex-wrap gap-2">
-        {entry.stack.map((tech) => (
-          <StackTag key={tech} tech={tech} />
-        ))}
-      </div>
-    </div>
-  </div>
+    <StackTags stack={entry.stack} />
+  </LedgerRow>
 )
 
 export const Experience = () => {
   const { dict } = useLanguage()
 
-  const translatedEntries = experience.map((entry) => {
-    const t = dict.experienceEntries[entry.id]
-    return t ? { ...entry, role: t.role, description: t.description, sectionLabels: t.sectionLabels } : entry
-  })
-
   return (
-    <PageSection id="experience">
-      <SectionLabel label={dict.experience.sectionLabel} />
-
-      <div className="hidden md:grid grid-cols-[160px_1fr_1.4fr] gap-x-8 pb-4 border-b border-(--rule-strong)">
-        <span className="font-display text-[10px] tracking-[0.18em] uppercase text-(--text-muted)">{dict.experience.colPeriod}</span>
-        <span className="font-display text-[10px] tracking-[0.18em] uppercase text-(--text-muted)">{dict.experience.colRole}</span>
-        <span className="font-display text-[10px] tracking-[0.18em] uppercase text-(--text-muted)">{dict.experience.colOverview}</span>
+    <PageSection id="experience" label={dict.experience.sectionLabel}>
+      {/* Each row names its own period, role and overview, so the column heads are a visual aid only. */}
+      <div aria-hidden="true" className="hidden lg:grid ledger pb-4 mb-8 border-b border-rule-strong type-caption text-ink-muted">
+        <span>{dict.experience.colPeriod}</span>
+        <span>{dict.experience.colRole}</span>
+        <span>{dict.experience.colOverview}</span>
       </div>
 
-      <div className="divide-y divide-(--rule)">
-        {translatedEntries.map((entry) => (
+      <LedgerList>
+        {experience.map((entry) => (
           <ExperienceRow
             key={entry.id}
             entry={entry}
+            translation={dict.experienceEntries[entry.id]}
             periodLabel={formatPeriod(entry.period, dict.period)}
             currentPositionLabel={dict.experience.currentPosition}
           />
         ))}
-      </div>
+      </LedgerList>
     </PageSection>
   )
 }

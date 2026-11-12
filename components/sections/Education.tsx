@@ -1,53 +1,36 @@
 'use client'
 
-import { education, type EducationEntry } from '@/data/education'
-import { SectionLabel } from '@/components/SectionLabel'
+import { education } from '@/data/education'
 import { PageSection } from '@/components/PageSection'
+import { LedgerList, LedgerRow } from '@/components/LedgerRow'
 import { useLanguage } from '@/context/LanguageContext'
 import { formatPeriod } from '@/lib/formatPeriod'
-
-interface EducationRowProps {
-  entry: EducationEntry
-  periodLabel: string
-}
-
-const EducationRow = ({ entry, periodLabel }: EducationRowProps) => (
-  <div className="py-8 last:pb-0 grid grid-cols-1 md:grid-cols-[160px_1fr] md:items-baseline gap-y-3 gap-x-8">
-    <span className="font-display text-[11px] tracking-widest uppercase text-(--text-muted) leading-snug">
-      {periodLabel}
-    </span>
-    <div>
-      <h3 className="font-display text-[13px] tracking-[0.04em] uppercase font-semibold text-(--text) leading-snug">
-        {entry.program}
-      </h3>
-      <p className="mt-1 font-display text-[10px] tracking-[0.12em] uppercase text-(--text-muted)">
-        {entry.institution}
-      </p>
-      {entry.note && (
-        <p className="mt-2 text-base text-(--text-secondary) leading-relaxed max-w-130">
-          {entry.note}
-        </p>
-      )}
-    </div>
-  </div>
-)
 
 export const Education = () => {
   const { dict } = useLanguage()
 
-  const translatedEntries = education.map((entry) => {
-    const t = dict.educationEntries[entry.id]
-    return t ? { ...entry, note: t.note } : entry
-  })
-
   return (
-    <PageSection id="education">
-      <SectionLabel label={dict.education.sectionLabel} />
-      <div className="divide-y divide-(--rule)">
-        {translatedEntries.map((entry) => (
-          <EducationRow key={entry.id} entry={entry} periodLabel={formatPeriod(entry.period, dict.period)} />
+    <PageSection id="education" label={dict.education.sectionLabel}>
+      <LedgerList>
+        {education.map((entry) => (
+          <LedgerRow
+            key={entry.id}
+            aside={
+              <p className="type-label tracking-widest tabular-nums text-ink-muted">
+                {formatPeriod(entry.period, dict.period)}
+              </p>
+            }
+            head={
+              <>
+                <h3 className="type-title text-ink">{entry.program}</h3>
+                <p className="mt-1.5 type-label tracking-[0.12em] text-ink-secondary">{entry.institution}</p>
+              </>
+            }
+          >
+            <p className="type-body max-w-130">{dict.educationEntries[entry.id].note}</p>
+          </LedgerRow>
         ))}
-      </div>
+      </LedgerList>
     </PageSection>
   )
 }

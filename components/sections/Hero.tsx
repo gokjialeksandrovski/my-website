@@ -3,66 +3,61 @@
 import { useLanguage } from '@/context/LanguageContext'
 import { Collapsible } from '@/components/Collapsible'
 import { HeroShell } from '@/components/HeroShell'
+import { HeroHeading } from '@/components/HeroHeading'
+import { Prose } from '@/components/Prose'
 import { ANIMATION_DELAYS } from '@/lib/animationDelays'
 
 const PHILOSOPHY_ID = 'hero-philosophy'
+const TITLE_SEPARATOR = ' · '
+
+// The title may only break at its separator: "Full-Stack" split at the hyphen reads as two words.
+const TitleLine = ({ title }: { title: string }) => {
+  const parts = title.split(TITLE_SEPARATOR)
+  return (
+    <p className="font-display text-xl md:text-2xl tracking-[0.04em] uppercase text-ink-secondary font-medium leading-snug">
+      {parts.map((part, index) => (
+        <span key={part}>
+          <span className="whitespace-nowrap">
+            {part}
+            {index < parts.length - 1 && ' ·'}
+          </span>{' '}
+        </span>
+      ))}
+    </p>
+  )
+}
 
 export const Hero = () => {
   const { dict, lang } = useLanguage()
-  const headingLeading = lang === 'mk' ? 'leading-[1.036]' : 'leading-[1.0] md:leading-[0.88]'
-  // "Александровски" sets at 7.84em vs 6.98em for the Latin name; the Latin clamp pushed it ~55px past the column.
-  const headingSize = lang === 'mk' ? 'clamp(2rem, 10vw, 9.25rem)' : 'clamp(2rem, 11vw, 10rem)'
+  const { profile } = dict
 
   return (
     <HeroShell>
-      <div className="mb-8 animate-in" style={{ animationDelay: ANIMATION_DELAYS.status }}>
-        <div className="inline-flex flex-wrap items-center gap-x-4 gap-y-1 font-display text-[11px] tracking-[0.14em] uppercase">
-          <span className="inline-flex items-start gap-2 font-semibold text-(--accent-text)">
-            <span
-              className="shrink-0 mt-1.25 w-1.5 h-1.5 rounded-full bg-(--accent)"
-              aria-hidden="true"
-            />
-            {dict.profile.statusLabel}
-          </span>
-        </div>
-      </div>
-
-      <h1
-        className={`font-display font-bold uppercase text-(--text) tracking-[-0.02em] animate-in pb-4 ${headingLeading}`}
-        style={{
-          fontSize: headingSize,
-          animationDelay: ANIMATION_DELAYS.heading,
-        }}
+      <p
+        className="mb-6 md:mb-8 flex items-baseline gap-2 type-label font-semibold text-signal-text animate-in"
+        style={{ animationDelay: ANIMATION_DELAYS.status }}
       >
-        <span className="block" style={{ marginLeft: '-0.025em' }}>
-          {dict.profile.nameFirst}
-        </span>{' '}
-        <span className="block">{dict.profile.nameLast}</span>
-      </h1>
+        <span className="shrink-0 size-1.5 -translate-y-px rounded-full bg-signal" aria-hidden="true" />
+        {profile.statusLabel}
+      </p>
+
+      <HeroHeading first={profile.nameFirst} last={profile.nameLast} wide={lang === 'mk'} />
 
       <div
-        className="mt-6 border-t border-(--rule-strong) animate-in"
-        style={{ animationDelay: ANIMATION_DELAYS.divider }}
-      />
-
-      <div
-        className="mt-5 grid grid-cols-1 md:grid-cols-[1fr_1.6fr] gap-4 md:gap-12 animate-in"
+        className="mt-5 grid gap-x-8 gap-y-5 md:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:grid-cols-[10rem_minmax(0,1fr)_minmax(0,1.4fr)] animate-in"
         style={{ animationDelay: ANIMATION_DELAYS.meta }}
       >
-        <div>
-          <p className="font-display text-xl md:text-2xl tracking-[0.04em] uppercase text-(--text-secondary) font-medium leading-snug">
-            {dict.profile.title}
-          </p>
+        <div className="lg:col-span-2">
+          <TitleLine title={profile.title} />
         </div>
-        <div className="max-w-125">
-          <p className="text-sm md:text-base text-(--text-secondary) leading-normal md:leading-relaxed">
-            {dict.profile.bio}
-          </p>
+        <div className="max-w-130">
+          <p className="text-lg md:text-xl leading-snug text-ink">{profile.lead}</p>
+          <p className="mt-4 type-body">{profile.bio}</p>
 
-          <Collapsible id={PHILOSOPHY_ID} label={dict.hero.philosophyToggle} buttonMarginClass="mt-5">
-            <p className="mt-3 text-base text-(--text-secondary) leading-relaxed whitespace-pre-line">
-              {dict.profile.about}
-            </p>
+          <Collapsible id={PHILOSOPHY_ID} label={dict.hero.philosophyToggle}>
+            <div className="pt-4">
+              <Prose text={profile.about} />
+            </div>
           </Collapsible>
         </div>
       </div>

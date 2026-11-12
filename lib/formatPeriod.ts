@@ -24,5 +24,5 @@ export const formatPeriod = (period: Period, { months, present }: PeriodLabels) 
   const start = formatYearMonth(period.start, months)
   if (period.end === period.start) return start
   const end = period.end === PRESENT ? present : formatYearMonth(period.end, months)
-  return `${start} — ${end}`
+  return `${start} – ${end}`
 }

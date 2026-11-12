@@ -5,6 +5,7 @@ import { Projects } from '@/components/sections/Projects'
 import { AiEngineering } from '@/components/sections/AiEngineering'
 import { Education } from '@/components/sections/Education'
 import { Contact } from '@/components/sections/Contact'
+import { SiteFooter } from '@/components/SiteFooter'
 
 const BASE_URL = 'https://gordanaleksandrovski.com'
 
@@ -47,6 +48,7 @@ const Home = () => (
       <AiEngineering />
       <Contact />
     </main>
+    <SiteFooter />
   </>
 )
 

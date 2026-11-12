@@ -1,4 +1,8 @@
 import type { PeriodLabels } from '../../lib/formatPeriod'
+import type { ContactId } from '../contact'
+import type { EducationId } from '../education'
+import type { ExperienceId } from '../experience'
+import type { ProjectId } from '../projects'
 
 export interface ExperienceTranslation {
   readonly role: string
@@ -7,10 +11,15 @@ export interface ExperienceTranslation {
   readonly sectionLabels?: readonly string[]
 }
 
+export interface TechnicalSection {
+  readonly label: string
+  readonly content: string
+}
+
 export interface ProjectTranslation {
   readonly name?: string
   readonly summary: string
-  readonly technicalSections: Readonly<Record<string, string>>
+  readonly technicalSections: readonly TechnicalSection[]
 }
 
 export interface ContactEntryTranslation {
@@ -62,8 +71,6 @@ export interface Dictionary {
   readonly projects: {
     readonly sectionLabel: string
     readonly technicalToggle: string
-    readonly live: string
-    readonly source: string
     readonly personal: string
   }
   readonly contact: {
@@ -72,13 +79,14 @@ export interface Dictionary {
     readonly location: string
     readonly copyFailed: string
     readonly copied: string
-    readonly copyLink: string
+    readonly copyAction: string
   }
   readonly education: {
     readonly sectionLabel: string
   }
   readonly aiEngineering: {
     readonly sectionLabel: string
+    readonly tool: string
     readonly text: string
   }
   readonly profile: {
@@ -86,12 +94,13 @@ export interface Dictionary {
     readonly nameLast: string
     readonly statusLabel: string
     readonly title: string
+    readonly lead: string
     readonly bio: string
     readonly about: string
   }
   readonly period: PeriodLabels
-  readonly experienceEntries: Readonly<Record<string, ExperienceTranslation>>
-  readonly projectEntries: Readonly<Record<string, ProjectTranslation>>
-  readonly contactEntries: Readonly<Record<string, ContactEntryTranslation>>
-  readonly educationEntries: Readonly<Record<string, EducationEntryTranslation>>
+  readonly experienceEntries: Readonly<Record<ExperienceId, ExperienceTranslation>>
+  readonly projectEntries: Readonly<Record<ProjectId, ProjectTranslation>>
+  readonly contactEntries: Readonly<Record<ContactId, ContactEntryTranslation>>
+  readonly educationEntries: Readonly<Record<EducationId, EducationEntryTranslation>>
 }

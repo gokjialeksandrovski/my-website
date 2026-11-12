@@ -5,7 +5,7 @@ export interface ContactLink {
   readonly url?: string
 }
 
-export const contactLinks: readonly ContactLink[] = [
+export const contactLinks = [
   {
     id: 'email',
     value: 'gordanaleksandrovski20@gmail.com',
@@ -29,4 +29,6 @@ export const contactLinks: readonly ContactLink[] = [
     url: '/Gordan-Aleksandrovski-CV.pdf',
     copyValue: 'https://gordanaleksandrovski.com/Gordan-Aleksandrovski-CV.pdf',
   },
-]
+] as const satisfies readonly ContactLink[]
+
+export type ContactId = (typeof contactLinks)[number]['id']

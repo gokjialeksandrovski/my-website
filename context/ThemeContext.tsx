@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, useSyncExternalStore } from 'react'
 import { COOKIE_KEYS, writeCookie } from '@/lib/cookies'
+import { withViewTransition } from '@/lib/viewTransition'
 
 type Theme = 'light' | 'dark'
 const MQ = '(prefers-color-scheme: dark)'
@@ -45,8 +46,12 @@ export const ThemeProvider = ({ initialTheme, children }: ThemeProviderProps) =>
   }, [override, systemTheme])
 
   const setTheme = (next: Theme) => {
-    setOverride(next)
     writeCookie(COOKIE_KEYS.theme, next)
+    // The class flips inside the transition callback: waiting for the effect below would snapshot the old theme twice.
+    withViewTransition(() => {
+      document.documentElement.classList.toggle('dark', next === 'dark')
+      setOverride(next)
+    })
   }
 
   return (

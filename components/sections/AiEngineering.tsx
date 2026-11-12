@@ -1,6 +1,5 @@
 'use client'
 
-import { SectionLabel } from '@/components/SectionLabel'
 import { PageSection } from '@/components/PageSection'
 import { useLanguage } from '@/context/LanguageContext'
 
@@ -8,11 +7,11 @@ export const AiEngineering = () => {
   const { dict } = useLanguage()
 
   return (
-    <PageSection id="ai-engineering">
-      <SectionLabel label={dict.aiEngineering.sectionLabel} />
-      <p className="text-base text-(--text-secondary) leading-relaxed max-w-130">
-        {dict.aiEngineering.text}
-      </p>
+    <PageSection id="ai-engineering" label={dict.aiEngineering.sectionLabel}>
+      <div className="grid ledger gap-y-5 md:items-baseline">
+        <h3 className="type-title text-ink md:col-start-2">{dict.aiEngineering.tool}</h3>
+        <p className="type-body max-w-130 md:col-start-2 lg:col-start-3">{dict.aiEngineering.text}</p>
+      </div>
     </PageSection>
   )
 }

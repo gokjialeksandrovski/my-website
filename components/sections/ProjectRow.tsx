@@ -2,98 +2,75 @@
 
 import Link from 'next/link'
 import { type Project } from '@/data/projects'
-import { StackTag } from '@/components/StackTag'
+import type { ProjectTranslation } from '@/data/translations/types'
+import { StackTags } from '@/components/StackTags'
 import { Collapsible } from '@/components/Collapsible'
+import { Glyph } from '@/components/Glyph'
+import { LedgerRow } from '@/components/LedgerRow'
 import { useLanguage } from '@/context/LanguageContext'
 
-interface ExternalLinkProps {
-  url: string
-  label: string
-  newTabLabel: string
-}
+const URL_PREFIX = /^https?:\/\/(www\.)?/
 
-const ExternalLink = ({ url, label, newTabLabel }: ExternalLinkProps) => (
+// The link reads as its own destination, so a live site and a source repo need no separate labels.
+const ProjectLink = ({ url, newTabLabel }: { url: string; newTabLabel: string }) => (
   <Link
     href={url}
     target="_blank"
     rel="noopener noreferrer"
-    className="relative before:absolute before:inset-x-0 before:-inset-y-1.5 font-display text-[11px] tracking-[0.12em] uppercase text-(--text-secondary) hover:text-(--accent-text) transition-colors duration-200 border-b border-current pb-px"
+    className="group relative before:absolute before:-inset-x-1 before:-inset-y-2 inline-flex items-baseline gap-1.5 font-display text-[0.8125rem] tracking-[0.04em] text-ink-secondary hover:text-signal-text transition-colors duration-200"
   >
-    {label}
+    <span className="wrap-anywhere underline decoration-1 underline-offset-4">{url.replace(URL_PREFIX, '')}</span>
+    <Glyph
+      name="arrowUpRight"
+      className="size-2.5 text-signal-text transition-transform duration-200 ease-out-expo group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
+    />
     <span className="sr-only"> ({newTabLabel})</span>
   </Link>
 )
 
-const ProjectLinks = ({ project }: { project: Project }) => {
-  const { dict } = useLanguage()
-  const links = [
-    { url: project.url, label: dict.projects.live },
-    { url: project.repoUrl, label: dict.projects.source },
-  ].filter((link): link is { url: string; label: string } => Boolean(link.url))
-  if (links.length === 0) return null
-
-  return (
-    <div className="mt-4 flex gap-6">
-      {links.map(({ url, label }) => (
-        <ExternalLink key={url} url={url} label={label} newTabLabel={dict.a11y.newTab} />
-      ))}
-    </div>
-  )
+interface ProjectRowProps {
+  project: Project
+  translation: ProjectTranslation
 }
 
-export const ProjectRow = ({ project }: { project: Project }) => {
+export const ProjectRow = ({ project, translation }: ProjectRowProps) => {
   const { dict } = useLanguage()
-  const collapsibleId = `technical-${project.id}`
+  const links = [project.url, project.repoUrl].filter((url): url is string => Boolean(url))
 
   return (
-    <div className="py-8 last:pb-0 grid grid-cols-1 md:grid-cols-[48px_1fr] md:items-baseline gap-4 md:gap-8">
-      <div>
-        <span className="font-display text-[11px] tracking-widest tabular-nums text-(--text-muted)">
-          {project.year}
-        </span>
-      </div>
-
-      <div>
-        <h3 className="flex flex-wrap items-center gap-x-3 gap-y-1 font-display text-[13px] md:text-base tracking-[0.04em] uppercase font-semibold text-(--text)">
-          {project.name}{' '}
-          {project.personal && (
-            <span className="font-normal text-[10px] tracking-[0.18em] text-(--text-muted) border border-dashed border-(--rule) px-1.5 py-px">
-              {dict.projects.personal}
-            </span>
-          )}
-        </h3>
-
-        <p className="mt-2 text-base text-(--text-secondary) leading-relaxed max-w-130">
-          {project.summary}
-        </p>
-
-        <div className="mt-3 flex flex-wrap gap-2">
-          {project.stack.map((tech) => (
-            <StackTag key={tech} tech={tech} />
+    <LedgerRow
+      aside={<p className="type-label tracking-widest tabular-nums text-ink-muted">{project.year}</p>}
+      head={
+        <>
+          <h3 className="flex flex-wrap items-center gap-x-3 gap-y-1.5 type-title text-ink">
+            {translation.name ?? project.name}
+            {project.personal && (
+              <span className="type-caption font-normal text-ink-muted border border-dashed border-rule-strong px-1.5 py-px">
+                {dict.projects.personal}
+              </span>
+            )}
+          </h3>
+          {links.map((url) => (
+            <p key={url} className="mt-1.5">
+              <ProjectLink url={url} newTabLabel={dict.a11y.newTab} />
+            </p>
           ))}
-        </div>
+        </>
+      }
+    >
+      <p className="type-body max-w-130">{translation.summary}</p>
+      <StackTags stack={project.stack} />
 
-        <ProjectLinks project={project} />
-
-        <Collapsible
-          id={collapsibleId}
-          label={dict.projects.technicalToggle}
-          buttonColorClass="text-(--text-muted)"
-        >
-          <div className="mt-3 space-y-5 max-w-130">
-            {project.technicalSections.map(({ label, content }) => (
-              <div key={label}>
-                <p className="font-display text-[10px] tracking-[0.18em] uppercase text-(--text-muted) mb-1.5">
-                  {label}
-                </p>
-                <p className="text-base text-(--text-secondary) leading-relaxed">
-                  {content}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Collapsible>
-      </div>
-    </div>
+      <Collapsible id={`technical-${project.id}`} label={dict.projects.technicalToggle}>
+        <dl className="pt-5 space-y-5 max-w-130">
+          {translation.technicalSections.map(({ label, content }) => (
+            <div key={label}>
+              <dt className="type-caption text-ink-muted mb-1.5">{label}</dt>
+              <dd className="type-body">{content}</dd>
+            </div>
+          ))}
+        </dl>
+      </Collapsible>
+    </LedgerRow>
   )
 }

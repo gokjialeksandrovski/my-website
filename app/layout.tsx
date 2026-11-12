@@ -89,6 +89,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
     <html
       lang={lang}
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
       className={`${oswald.variable} ${jost.variable}${themeClass}`}
     >
       {theme === undefined && (

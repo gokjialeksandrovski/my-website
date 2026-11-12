@@ -3,16 +3,17 @@
 import { useEffect, useRef, useState, type FocusEvent, type KeyboardEvent } from 'react'
 import Link from 'next/link'
 import { type ContactLink } from '@/data/contact'
+import { Glyph, type GlyphName } from '@/components/Glyph'
 
 type CopyStatus = 'idle' | 'copied' | 'error'
 
-const INDICATOR: Record<CopyStatus, string> = { idle: '→', copied: '✓', error: '!' }
+const COPY_GLYPH: Record<CopyStatus, GlyphName> = { idle: 'copy', copied: 'check', error: 'alert' }
 const COPIED_RESET_MS = 2000
 
 export interface ContactRowStrings {
   label: string
   tooltip: string
-  copyLink: string
+  copyAction: string
   copied: string
   copyFailed: string
   newTab: string
@@ -56,24 +57,6 @@ const liveMessage = (status: CopyStatus, strings: ContactRowStrings, copyValue: 
   return ''
 }
 
-interface TooltipBodyProps {
-  status: CopyStatus
-  copyValue: string
-  strings: ContactRowStrings
-}
-
-const TooltipBody = ({ status, copyValue, strings }: TooltipBodyProps) => {
-  if (status === 'error') {
-    return (
-      <>
-        <p className="font-body text-xs text-(--text-muted) leading-relaxed mb-1.5">{strings.copyFailed}</p>
-        <span className="font-display text-xs text-(--text) select-all break-all">{copyValue}</span>
-      </>
-    )
-  }
-  return <p className="font-body text-xs text-(--text-secondary) leading-relaxed">{strings.tooltip}</p>
-}
-
 interface ContactTooltipProps {
   id: string
   show: boolean
@@ -82,50 +65,51 @@ interface ContactTooltipProps {
   strings: ContactRowStrings
 }
 
-// Always in the DOM (hidden when closed) so aria-describedby never points at a missing id.
+// Always in the DOM (hidden when closed) so aria-describedby never points at a missing id,
+// and outside the control so its text never joins the control's accessible name.
 const ContactTooltip = ({ id, show, status, copyValue, strings }: ContactTooltipProps) => (
   <div
     id={id}
     role="tooltip"
     hidden={!show}
-    className={`absolute top-full right-0 sm:right-auto sm:left-0 mt-1 z-10 w-72 max-w-[calc(100vw-3rem)] bg-(--bg-subtle) border border-(--rule) px-3 py-2 ${status !== 'error' ? 'pointer-events-none' : ''}`}
+    className={`absolute top-full left-0 md:left-48 -mt-2 z-10 w-72 max-w-full bg-paper-shade border border-rule px-3 py-2 text-xs leading-relaxed ${status === 'error' ? '' : 'pointer-events-none'}`}
   >
-    <TooltipBody status={status} copyValue={copyValue} strings={strings} />
+    {status === 'error' ? (
+      <>
+        <p className="text-ink-secondary mb-1.5">{strings.copyFailed}</p>
+        <span className="font-display tracking-[0.02em] text-ink select-all break-all">{copyValue}</span>
+      </>
+    ) : (
+      <p className="text-ink-secondary">{strings.tooltip}</p>
+    )}
   </div>
 )
 
 interface RowInnerProps {
-  link: ContactLink
-  status: CopyStatus
-  tooltipId: string
-  showTooltip: boolean
+  value: string
+  glyph: GlyphName
+  isCopied: boolean
+  hint: string
   strings: ContactRowStrings
 }
 
-const RowInner = ({ link, status, tooltipId, showTooltip, strings }: RowInnerProps) => {
-  const isCopied = status === 'copied'
-  const valueColor = isCopied ? 'text-(--accent-text)' : 'text-(--text-secondary)'
-  const indicatorVisibility = status === 'idle' ? 'hidden md:inline' : 'inline'
-
-  return (
-    <>
-      <div className="flex items-center w-full md:w-auto justify-between md:justify-start md:gap-12">
-        <span className="font-display text-[10px] tracking-[0.18em] uppercase text-(--text-muted) w-20 shrink-0">
-          {strings.label}
-        </span>
-        <span className="relative min-w-0">
-          <span className={`wrap-anywhere font-display text-sm md:text-base tracking-[0.02em] group-hover:text-(--accent-text) transition-colors duration-200 ${valueColor}`}>
-            {isCopied ? strings.copied : link.value}
-          </span>
-          <ContactTooltip id={tooltipId} show={showTooltip} status={status} copyValue={link.copyValue} strings={strings} />
-        </span>
-      </div>
-      <span aria-hidden="true" className={`${indicatorVisibility} ml-3 font-display text-sm text-(--text-muted) group-hover:text-(--accent-text) transition-colors duration-200`}>
-        {INDICATOR[status]}
+const RowInner = ({ value, glyph, isCopied, hint, strings }: RowInnerProps) => (
+  <>
+    <span className="min-w-0 flex-1 md:flex md:items-baseline">
+      <span className="block md:w-48 md:shrink-0 type-caption text-ink-muted">{strings.label}</span>
+      <span
+        className={`block mt-1 md:mt-0 wrap-anywhere font-display text-[0.9375rem] md:text-base tracking-[0.02em] group-hover:text-signal-text transition-colors duration-200 ${isCopied ? 'text-signal-text' : 'text-ink'}`}
+      >
+        {isCopied ? strings.copied : value}
       </span>
-    </>
-  )
-}
+      <span className="sr-only"> ({hint})</span>
+    </span>
+    <Glyph
+      name={glyph}
+      className={`size-3 transition-[color,translate] duration-200 ease-out-expo group-hover:text-signal-text motion-reduce:transition-none ${isCopied ? 'text-signal-text' : 'text-ink-muted'} ${glyph === 'arrowUpRight' ? 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5' : ''}`}
+    />
+  </>
+)
 
 interface ContactRowProps {
   link: ContactLink
@@ -137,7 +121,8 @@ export const ContactRow = ({ link, strings }: ContactRowProps) => {
   const [hintVisible, setHintVisible] = useState(false)
   const isTouch = useIsTouch()
   const tooltipId = `tooltip-${link.id}`
-  const showTooltip = status === 'error' || (!isTouch && hintVisible)
+  // Once copied, the value itself reports the result; the hint would only repeat it.
+  const showTooltip = status === 'error' || (status === 'idle' && !isTouch && hintVisible)
 
   const sharedProps = {
     onMouseEnter: () => setHintVisible(true),
@@ -155,34 +140,32 @@ export const ContactRow = ({ link, strings }: ContactRowProps) => {
       dismissError()
     },
     'aria-describedby': tooltipId,
-    className: 'group w-full flex items-center justify-between py-5 cursor-pointer text-left',
+    className: 'group w-full flex items-center gap-4 py-5 cursor-pointer text-left',
   }
 
-  const inner = <RowInner link={link} status={status} tooltipId={tooltipId} showTooltip={showTooltip} strings={strings} />
-
-  const control = link.url ? (
-    <Link
-      href={link.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`${strings.label} (${strings.newTab})`}
-      onClick={() => setHintVisible(false)}
-      {...sharedProps}
-    >
-      {inner}
-    </Link>
-  ) : (
-    <button type="button" onClick={handleCopy} aria-label={`${strings.copyLink}: ${strings.label}`} {...sharedProps}>
-      {inner}
-    </button>
-  )
+  const isCopied = status === 'copied'
 
   return (
-    <div>
-      {control}
+    <li className="relative">
+      {link.url ? (
+        <Link
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setHintVisible(false)}
+          {...sharedProps}
+        >
+          <RowInner value={link.value} glyph="arrowUpRight" isCopied={false} hint={strings.newTab} strings={strings} />
+        </Link>
+      ) : (
+        <button type="button" onClick={handleCopy} {...sharedProps}>
+          <RowInner value={link.value} glyph={COPY_GLYPH[status]} isCopied={isCopied} hint={strings.copyAction} strings={strings} />
+        </button>
+      )}
+      <ContactTooltip id={tooltipId} show={showTooltip} status={status} copyValue={link.copyValue} strings={strings} />
       <span role="status" className="sr-only">
         {liveMessage(status, strings, link.copyValue)}
       </span>
-    </div>
+    </li>
   )
 }

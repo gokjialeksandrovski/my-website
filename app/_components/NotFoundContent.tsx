@@ -2,6 +2,8 @@
 
 import Link from 'next/link'
 import { useLanguage } from '@/context/LanguageContext'
+import { Glyph } from '@/components/Glyph'
+import { HeroHeading } from '@/components/HeroHeading'
 import { ANIMATION_DELAYS } from '@/lib/animationDelays'
 
 export const NotFoundContent = () => {
@@ -10,49 +12,34 @@ export const NotFoundContent = () => {
 
   return (
     <>
-      <div className="mb-8 animate-in" style={{ animationDelay: ANIMATION_DELAYS.status }}>
-        <span className="inline-flex items-center gap-2 font-display text-[11px] tracking-[0.14em] uppercase font-semibold text-(--accent-text)">
-          <span className="w-1.5 h-1.5 rounded-full bg-(--accent)" aria-hidden="true" />
-          404
-        </span>
-      </div>
-
-      <h1
-        className="font-display font-bold uppercase text-(--text) leading-[0.88] tracking-[-0.02em] animate-in"
-        style={{
-          fontSize: 'clamp(2rem, 11vw, 10rem)',
-          animationDelay: ANIMATION_DELAYS.heading,
-        }}
+      <p
+        className="mb-6 md:mb-8 flex items-baseline gap-2 type-label font-semibold text-signal-text animate-in"
+        style={{ animationDelay: ANIMATION_DELAYS.status }}
       >
-        <span className="block">{notFound.titleFirst}</span>{' '}
-        <span className="block">{notFound.titleLast}</span>
-      </h1>
+        <span className="shrink-0 size-1.5 -translate-y-px rounded-full bg-signal" aria-hidden="true" />
+        404
+      </p>
+
+      <HeroHeading first={notFound.titleFirst} last={notFound.titleLast} />
 
       <div
-        className="mt-6 border-t border-(--rule-strong) animate-in"
-        style={{ animationDelay: ANIMATION_DELAYS.divider }}
-      />
-
-      <div
-        className="mt-5 grid grid-cols-1 md:grid-cols-[1fr_1.6fr] gap-4 md:gap-12 animate-in"
+        className="mt-5 grid gap-x-8 gap-y-5 md:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:grid-cols-[10rem_minmax(0,1fr)_minmax(0,1.4fr)] animate-in"
         style={{ animationDelay: ANIMATION_DELAYS.meta }}
       >
-        <div className="space-y-3">
-          <p className="font-display text-xl md:text-2xl tracking-[0.04em] uppercase text-(--text-secondary) font-medium leading-snug">
-            {notFound.headline}
-          </p>
-          <p className="font-display text-[10px] tracking-[0.12em] uppercase text-(--text-muted)">
-            gordanaleksandrovski.com
-          </p>
-        </div>
-        <div className="max-w-125">
-          <p className="text-base text-(--text-secondary) leading-relaxed">{notFound.body}</p>
+        <p className="lg:col-span-2 font-display text-xl md:text-2xl tracking-[0.04em] uppercase text-ink-secondary font-medium leading-snug">
+          {notFound.headline}
+        </p>
+        <div className="max-w-130">
+          <p className="type-body">{notFound.body}</p>
           <Link
             href="/"
-            className="mt-4 inline-flex items-center gap-2 font-display text-[11px] tracking-[0.14em] uppercase text-(--text-secondary) hover:text-(--accent-text) transition-colors duration-200"
+            className="group mt-5 relative before:absolute before:-inset-x-1 before:-inset-y-2 inline-flex items-center gap-2.5 type-label text-ink-secondary hover:text-signal-text transition-colors duration-200"
           >
-            <span className="text-(--accent-text)" aria-hidden="true">←</span>
-            <span className="border-b border-current pb-px">{notFound.back}</span>
+            <Glyph
+              name="arrowLeft"
+              className="size-2.5 text-signal-text transition-transform duration-200 ease-out-expo group-hover:-translate-x-0.5 motion-reduce:transition-none"
+            />
+            <span className="underline decoration-1 underline-offset-4">{notFound.back}</span>
           </Link>
         </div>
       </div>

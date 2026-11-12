@@ -1,25 +1,19 @@
 'use client'
 
 import { useLanguage } from '@/context/LanguageContext'
+import { SegmentToggle } from './SegmentToggle'
+
+const SEGMENTS = ['EN', 'MK'] as const
 
 export const LanguageToggle = () => {
   const { lang, dict, setLang } = useLanguage()
-  const next = lang === 'en' ? 'mk' : 'en'
 
   return (
-    <button
-      type="button"
-      onClick={() => setLang(next)}
-      aria-label={dict.toggles.switchLanguage}
-      className="font-display text-[11px] tracking-[0.12em] uppercase cursor-pointer self-stretch flex items-center gap-1"
-    >
-      <span className={lang === 'en' ? 'text-(--text)' : 'text-(--text-muted) hover:text-(--text) transition-colors duration-200'}>
-        EN
-      </span>
-      <span className="text-(--rule-strong)" aria-hidden="true">·</span>
-      <span className={lang === 'mk' ? 'text-(--text)' : 'text-(--text-muted) hover:text-(--text) transition-colors duration-200'}>
-        MK
-      </span>
-    </button>
+    <SegmentToggle
+      segments={SEGMENTS}
+      activeIndex={lang === 'en' ? 0 : 1}
+      label={dict.toggles.switchLanguage}
+      onToggle={() => setLang(lang === 'en' ? 'mk' : 'en')}
+    />
   )
 }
